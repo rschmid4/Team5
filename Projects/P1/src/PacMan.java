@@ -25,13 +25,14 @@ public class PacMan{
 
 		/*
 		* figure out which neighboring moves are invalid and remove them from valid_moves.
-		* an invalid move is one where the location is occupied by a wall or a ghost.
+		* an invalid move is one where the location is occupied by a wall, ghost, or pacman.
 		*/
 		for (Location neighbor : valid_moves) {
 			HashSet<Map.Type> contents = myMap.getLoc(neighbor);
 			Boolean condition = contents == null ||
 				contents.contains(Map.Type.GHOST) ||
-				contents.contains(Map.Type.WALL);
+				contents.contains(Map.Type.WALL) ||
+				contents.contains(Map.Type.PACMAN);
 			valid_moves.removeIf(ele -> condition);
 		}
 
