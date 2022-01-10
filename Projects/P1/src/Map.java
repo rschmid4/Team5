@@ -53,6 +53,18 @@ public class Map{
 	}
 
 	public boolean move(String name, Location loc, Type type) {
+		Location currLoc = locations.get(name);
+		locations.put(name, loc);
+		JComponent comp = (JComponent)components.get(name);
+		comp.setLocation(loc.x, loc.y);
+		if(field.get(currLoc)!= null) {
+		field.get(currLoc).remove(type);
+		}
+		if(!field.containsKey(loc)) {
+			field.put(loc, new HashSet <Type>());
+			field.get(loc).add(type);
+			return true;
+		}
 		//update locations, components, and field
 		//use the setLocation method for the component to move it to the new location
 		return false;
@@ -69,8 +81,38 @@ public class Map{
 	}
 
 	public boolean attack(String Name) {
-		//update gameOver
-		return false;
+      
+       Location ghost_location = locations.get(Name);
+ 
+       if (field.get((Location)ghost_location.shift(1,0)) == Map.Type.PACMAN){
+           locations.
+ 
+           locations.put(Name, (Location)ghost_location.shift(1,0));
+ 
+ 
+       } else if (field.get(ghost_location.shift(-1,0)) == Map.Type.PACMAN){
+ 
+           locations.put(Name, (Location)ghost_location.shift(-1,0));
+ 
+          
+       } else if (field.get(ghost_location.shift(0,1)) == Map.Type.PACMAN){
+          
+ 
+           locations.put(Name, (Location)ghost_location.shift(0,1));
+ 
+ 
+       } else if (field.get(ghost_location.shift(0,-1)) == Map.Type.PACMAN){
+          
+           locations.put(Name, (Location)ghost_location.shift(0,-1));
+ 
+ 
+       } else {
+           return false;
+       }
+ 
+       gameOver = true;
+	   
+       return true;
 	}
 
 	public JComponent eatCookie(String name) {
