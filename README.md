@@ -1,11 +1,5 @@
-cmsc389T-winter22
-
-
-
 # Pac-Man Remastered
 Contributors: Eric Chu, Aditi Sekar, Hank Wu, Noah Sandler
-
-
 
 
 [TODO: Add an image of your code playing PacMan]
@@ -25,7 +19,8 @@ Contributors: Eric Chu, Aditi Sekar, Hank Wu, Noah Sandler
 blah blah blah blah blah 
 
 #### Map-attack()
-blah blah blah blah blah 
+This method checks if the pacman is in range of the ghost. If it is, the ghost will "attack" the pacman by replacing it's location with Pacman's current location
+& the gameOver variable will be set to true. 
 
 #### Ghost-move()
 blah blah blah blah blah 
