@@ -4,6 +4,11 @@ import java.io.*;
 
 public class TestGhostInRange extends TestCase {
 
+	PacMan pm;
+	Location lc;
+	Map mp;
+	Ghost ghost;
+	
 	public void testGhostInRange(){
 		mp = new Map(10);
 		lc = new Location(5,5);
