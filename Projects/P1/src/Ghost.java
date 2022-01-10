@@ -12,12 +12,40 @@ public class Ghost{
 		this.myMap = map;
 	}
 	public ArrayList<Location> get_valid_moves() {
-		return null;
-	}
-	public boolean move() {
-		return false;
-	}
+	ArrayList<Location> valid_moves = new ArrayList<Location>();
 
+		/* determime neighbors in all 4 possible directions */
+		valid_moves.add(myLoc.shift(0, 1));
+		valid_moves.add(myLoc.shift(1, 0));
+		valid_moves.add(myLoc.shift(0, -1));
+		valid_moves.add(myLoc.shift(-1, 0));
+
+		/*
+		* figure out which neighboring moves are invalid and remove them from valid_moves.
+		* an invalid GHOST move is one where the location is occupied by a wall.
+		*/
+		for (Location neighbor : valid_moves) {
+			HashSet<Map.Type> contents = myMap.getLoc(neighbor);
+			Boolean condition = contents == null ||
+				contents.contains(Map.Type.WALL);
+			valid_moves.removeIf(ele -> condition);
+		}
+
+		return valid_moves;
+	}	
+	
+
+	public boolean move() {
+	ArrayList<Location> moves = get_valid_moves();
+       int moves_size = moves.size();
+
+       if (moves_size > 0) {
+           return myMap.move(myName, ((Location) moves.get( (int)
+           Math.random() * moves_size )), Map.Type.GHOST);
+       }
+
+       return false;
+	   }
 
 	public boolean is_pacman_in_range() {
 
@@ -42,7 +70,10 @@ public class Ghost{
 	}
 
 	public boolean attack() {
+	if (is_pacman_in_range()) {
+			this.myMap.attack(this.myName);
+			return true;
+		}
 		return false;
-
 	}
 }
