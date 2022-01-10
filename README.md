@@ -30,6 +30,14 @@ blah blah blah blah blah
 #### Ghost-move()
 blah blah blah blah blah 
 
+#### testGhostInRange()
+blah blah blah blah blah 
+
+#### testMapAttack()
+blah blah blah blah blah 
+
+#### testGhostMove()
+blah blah blah blah blah 
 
 
 
