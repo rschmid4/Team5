@@ -1,7 +1,7 @@
 class Location {
 	public int x;
 	public int y;
-	
+
 	public Location(int x, int y) {
 		this.x = x;
 		this.y = y;
@@ -28,6 +28,12 @@ class Location {
         result = 31 * result + y;
         return result;
     }
+
+    @Override
+    public String toString() {
+        return (String) ("(" + this.x  + ", " + this.y + ")");
+    }
+
 
 
 
