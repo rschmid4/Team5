@@ -123,7 +123,7 @@ public class Map{
 
 		if (this.getLoc(pmLoaction).contains(Type.COOKIE)) {
 			// Update the map
-			Jcomponent cookieComp = components.get("tok_x"+pmLoaction.x+"_y"+pmLoaction.y);
+			JComponent cookieComp = components.get("tok_x"+pmLoaction.x+"_y"+pmLoaction.y);
 			field.get(pmLoaction).remove(Type.COOKIE);
 			components.remove("tok_x"+pmLoaction.x+"_y"+pmLoaction.y);
 			locations.remove("tok_x"+pmLoaction.x+"_y"+pmLoaction.y);
