@@ -37,3 +37,13 @@ blah blah blah blah blah
 
 
 
+### Hank Wu
+
+### Pacman consume()
+This function check to see if the location of current pacman object contains cookies. If a any cookie contains in the current spot, then a cookie component is returned, null otherwise.
+
+### Ghost attack()
+Ghost attack checks if any pacman is in range. If is_pacman_in_range() function return true, then the attack function in map class will be called and true will be returned here.
+
+### Map eatCookie()
+The eatCookies function is responsible for updating all properties of map object such as locations, components, field. At the end, it returns cookie component, null otherwise.
