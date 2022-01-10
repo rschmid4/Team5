@@ -40,10 +40,31 @@ public class PacMan{
 	}
 
 	public boolean move() {
-		return false;
+	ArrayList <Location> valid_moves = get_valid_moves();
+		int numMoves = valid_moves.size();
+		if(numMoves != 0) {
+			int randomLoc = (int) (Math.random()* (numMoves - 1));
+			return myMap.move(myName, (Location)valid_moves.get(randomLoc), Map.Type.PACMAN);
+		} else {
+			return false;
+		}
+
 	}
 
 	public boolean is_ghost_in_range() {
+		if (myMap.getLoc(myLoc.shift(1, 0)).contains(Map.Type.GHOST)){
+			return true;
+		}
+		if (myMap.getLoc(myLoc.shift(0, -1)).contains(Map.Type.GHOST)){
+			return true;
+		}
+		if (myMap.getLoc(myLoc.shift(-1, 0)).contains(Map.Type.GHOST)){
+			return true;
+		}
+		if (myMap.getLoc(myLoc.shift(0, 1)).contains(Map.Type.GHOST)){
+			return true;
+		}
+
 		return false;
 	}
 
