@@ -64,8 +64,38 @@ public class Map{
 	}
 
 	public boolean attack(String Name) {
-		//update gameOver
-		return false;
+      
+       Location ghost_location = locations.get(Name);
+ 
+       if (field.get((Location)ghost_location.shift(1,0)) == Map.Type.PACMAN){
+           locations.
+ 
+           locations.put(Name, (Location)ghost_location.shift(1,0));
+ 
+ 
+       } else if (field.get(ghost_location.shift(-1,0)) == Map.Type.PACMAN){
+ 
+           locations.put(Name, (Location)ghost_location.shift(-1,0));
+ 
+          
+       } else if (field.get(ghost_location.shift(0,1)) == Map.Type.PACMAN){
+          
+ 
+           locations.put(Name, (Location)ghost_location.shift(0,1));
+ 
+ 
+       } else if (field.get(ghost_location.shift(0,-1)) == Map.Type.PACMAN){
+          
+           locations.put(Name, (Location)ghost_location.shift(0,-1));
+ 
+ 
+       } else {
+           return false;
+       }
+ 
+       gameOver = true;
+	   
+       return true;
 	}
 	
 	public JComponent eatCookie(String name) {
