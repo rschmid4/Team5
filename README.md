@@ -15,8 +15,10 @@ Contributors: Eric Chu, Aditi Sekar, Hank Wu, Noah Sandler
 
 ### Eric Chu 
 
+
+
 #### Pacman-is_ghost_in_range()
-blah blah blah blah blah 
+blah blah blah 
 
 #### Map-attack()
 This method checks if the pacman is in range of the ghost. If it is, the ghost will "attack" the pacman by replacing it's location with Pacman's current location
@@ -35,6 +37,19 @@ blah blah blah blah blah
 blah blah blah blah blah 
 
 
+### Aditi Sekar
+
+### Pacman move()
+
+### Ghost is_pacman_in_range()
+
+### Map move()
+
+### testPacmanMove()
+
+### testGhostIs_Pacman_In_Range()
+
+### testMapMove()
 
 
 ### Hank Wu
