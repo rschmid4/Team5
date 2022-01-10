@@ -11,22 +11,21 @@ public class Ghost{
 		this.myName = name;
 		this.myMap = map;
 	}
-
 	public ArrayList<Location> get_valid_moves() {
 		return null;
 	}
-
 	public boolean move() {
 		return false;
 	}
 
-	public boolean is_pacman_in_range() { 
+
+	public boolean is_pacman_in_range() {
 
 		Location up = new Location(myLoc.x, myLoc.y-1);
 		Location down =  new Location(myLoc.x, myLoc.y+1);
 		Location right =  new Location(myLoc.x+1, myLoc.y);
 		Location left =  new Location(myLoc.x-1, myLoc.y);
-		
+
 		if(myMap.getLoc(up).contains(Map.Type.PACMAN)){
 			return true;
 		}
@@ -44,5 +43,6 @@ public class Ghost{
 
 	public boolean attack() {
 		return false;
+
 	}
 }
