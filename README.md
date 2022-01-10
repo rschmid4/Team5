@@ -37,19 +37,24 @@ blah blah blah blah blah
 blah blah blah blah blah 
 
 
+
 ### Aditi Sekar
 
 ### Pacman move()
+This method checks to find the possible locations the Pacman can move from its current location. If the Pacman can move to a valid location the method returns true, else it returns false. 
 
 ### Ghost is_pacman_in_range()
+This method checks to see if the Pacman is within attack range of a ghost. If the Pacman is one location to the right, left, up, or down of the ghost's current location it returns true, else it returns false. 
 
 ### Map move()
+This method takes a name, location, and type. It then tries to put it in the designated location. If the function is able to put the object in the specific location then it returns true, else false. 
 
 ### testPacmanMove()
 
 ### testGhostIs_Pacman_In_Range()
 
 ### testMapMove()
+
 
 
 ### Hank Wu
