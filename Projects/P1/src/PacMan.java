@@ -6,7 +6,7 @@ public class PacMan{
 	String myName;
 	Location myLoc;
 	Map myMap;
-	Location shift; 
+	Location shift;
 
 	public PacMan(String name, Location loc, Map map) {
 		this.myLoc = loc;
@@ -15,31 +15,27 @@ public class PacMan{
 	}
 
 	public ArrayList<Location> get_valid_moves() {
-	ArrayList<Location> valid_moves = new ArrayList<Location>();
-		
-		
-		
+		ArrayList<Location> valid_moves = new ArrayList<Location>();
+
 		/* determime neighbors in all 4 possible directions */
-		Location up = new Location(myLoc.x, myLoc.y-1);
-		Location down =  new Location(myLoc.x, myLoc.y+1);
-		Location right =  new Location(myLoc.x+1, myLoc.y);
-		Location left =  new Location(myLoc.x-1, myLoc.y);
-		
-		
-		
-		if(myMap.getLoc(up) == null || myMap.getLoc(up).size() == 0){
-			valid_moves.add(up);
+		valid_moves.add(myLoc.shift(0, 1));
+		valid_moves.add(myLoc.shift(1, 0));
+		valid_moves.add(myLoc.shift(0, -1));
+		valid_moves.add(myLoc.shift(-1, 0));
+
+		/*
+		* figure out which neighboring moves are invalid and remove them from valid_moves.
+		* an invalid move is one where the location is occupied by a wall, ghost, or pacman.
+		*/
+		for (Location neighbor : valid_moves) {
+			HashSet<Map.Type> contents = myMap.getLoc(neighbor);
+			Boolean condition = contents == null ||
+				contents.contains(Map.Type.GHOST) ||
+				contents.contains(Map.Type.WALL) ||
+				contents.contains(Map.Type.PACMAN);
+			valid_moves.removeIf(ele -> condition);
 		}
-		if(myMap.getLoc(down) == null ||myMap.getLoc(down).size() == 0){
-			valid_moves.add(down);
-		}
-		if(myMap.getLoc(left) == null ||myMap.getLoc(left).size() == 0){
-			valid_moves.add(left);
-		}
-		if(myMap.getLoc(right) == null ||myMap.getLoc(right).size() == 0){
-			valid_moves.add(right);
-		}
-		
+
 		return valid_moves;
 	}
 
@@ -52,28 +48,27 @@ public class PacMan{
 		} else {
 			return false;
 		}
-		
+
 	}
 
-	public boolean is_ghost_in_range() { 		
-
+	public boolean is_ghost_in_range() {
 		if (myMap.getLoc(myLoc.shift(1, 0)).contains(Map.Type.GHOST)){
-			return true; 
+			return true;
 		}
 		if (myMap.getLoc(myLoc.shift(0, -1)).contains(Map.Type.GHOST)){
-			return true; 
+			return true;
 		}
 		if (myMap.getLoc(myLoc.shift(-1, 0)).contains(Map.Type.GHOST)){
-			return true; 
+			return true;
 		}
 		if (myMap.getLoc(myLoc.shift(0, 1)).contains(Map.Type.GHOST)){
-			return true; 
+			return true;
 		}
 
 		return false;
 	}
 
-	public JComponent consume() { 
+	public JComponent consume() {
  		return null;
 	}
 }
