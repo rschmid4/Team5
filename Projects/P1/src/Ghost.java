@@ -21,6 +21,7 @@ public class Ghost{
 	}
 
 	public boolean is_pacman_in_range() { 
+
 		Location up = new Location(myLoc.x, myLoc.y-1);
 		Location down =  new Location(myLoc.x, myLoc.y+1);
 		Location right =  new Location(myLoc.x+1, myLoc.y);
