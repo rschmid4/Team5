@@ -81,36 +81,26 @@ public class Map{
 	}
 
 	public boolean attack(String Name) {
-      
        Location ghost_location = locations.get(Name);
- 
-       if (field.get((Location)ghost_location.shift(1,0)).contains(Map.Type.PACMAN)){
- 
-           locations.put(Name, (Location)ghost_location.shift(1,0));
- 
- 
-       } else if (field.get(ghost_location.shift(-1,0)).contains(Map.Type.PACMAN)){
- 
-           locations.put(Name, (Location)ghost_location.shift(-1,0));
- 
-          
-       } else if (field.get(ghost_location.shift(0,1)).contains(Map.Type.PACMAN)){
-          
- 
-           locations.put(Name, (Location)ghost_location.shift(0,1));
- 
- 
-       } else if (field.get(ghost_location.shift(0,-1)).contains(Map.Type.PACMAN)){
-          
-           locations.put(Name, (Location)ghost_location.shift(0,-1));
 
- 
+       if (field.get(ghost_location.shift(1,0)).contains(Map.Type.PACMAN)){
+           locations.put(Name, ghost_location.shift(1,0));
+
+       } else if (field.get(ghost_location.shift(-1,0)).contains(Map.Type.PACMAN)){
+           locations.put(Name, ghost_location.shift(-1,0));
+
+       } else if (field.get(ghost_location.shift(0,1)).contains(Map.Type.PACMAN)){
+           locations.put(Name, ghost_location.shift(0,1));
+
+       } else if (field.get(ghost_location.shift(0,-1)).contains(Map.Type.PACMAN)){
+           locations.put(Name, ghost_location.shift(0,-1));
+
        } else {
            return false;
        }
- 
+
        gameOver = true;
-	   
+
        return true;
 
 	}

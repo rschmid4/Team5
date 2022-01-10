@@ -13,6 +13,8 @@ public class Ghost{
 	}
 	public ArrayList<Location> get_valid_moves() {
 	ArrayList<Location> valid_moves = new ArrayList<Location>();
+	ArrayList<Location> moves_to_remove = new ArrayList<Location>();
+
 
 		/* determime neighbors in all 4 possible directions */
 		valid_moves.add(myLoc.shift(0, 1));
@@ -26,18 +28,23 @@ public class Ghost{
 		*/
 		for (Location neighbor : valid_moves) {
 			HashSet<Map.Type> contents = myMap.getLoc(neighbor);
-			Boolean condition = contents == null ||
-				contents.contains(Map.Type.WALL);
-			valid_moves.removeIf(ele -> condition);
+
+			Boolean condition = contents == null || contents.contains(Map.Type.WALL);
+
+			if (condition)
+				moves_to_remove.add(neighbor);
+
 		}
 
+		valid_moves.removeAll(moves_to_remove);
+
 		return valid_moves;
-	}	
-	
+	}
+
 
 	public boolean move() {
-	ArrayList<Location> moves = get_valid_moves();
-       int moves_size = moves.size();
+		ArrayList<Location> moves = get_valid_moves();
+		int moves_size = moves.size();
 
        if (moves_size > 0) {
            return myMap.move(myName, ((Location) moves.get( (int)
@@ -45,7 +52,7 @@ public class Ghost{
        }
 
        return false;
-	   }
+	}
 
 	public boolean is_pacman_in_range() {
 
