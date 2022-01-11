@@ -2,6 +2,7 @@
 Contributors: Eric Chu, Aditi Sekar, Hank Wu, Noah Sandler
 
 How to run the code: 
+
 0) cd Team5/Projects/P1
 1) javac -cp "src/" src/*.java
 2) java -cp "src/" StartMenu
