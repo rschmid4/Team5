@@ -144,12 +144,11 @@ public class Map{
 		
 		if (this.getLoc(pmLocation).contains(Type.COOKIE)) {
 			// Update the map
-			String cookie = (cookieLoc + "x" + pmLocation.x + "y" + pmLocation.y);
-			JComponent cookieComp = components.get(cookie);
+			JComponent cookieComp = components.get((cookieLoc + "x" + pmLocation.x + "y" + pmLocation.y));
 			field.get(pmLocation).remove(Type.COOKIE);
 			field.put(pmLocation, field.get(pmLocation));
-			components.remove(cookie);
-			locations.remove(cookie);
+			components.remove(cookieLoc + "x" + pmLocation.x + "y" + pmLocation.y);
+			locations.remove(cookieLoc + "x" + pmLocation.x + "y" + pmLocation.y);
 			this.cookies++;
 			return cookieComp;
 		} else{
