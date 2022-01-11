@@ -1,7 +1,7 @@
 # Pac-Man Remastered
 Contributors: Eric Chu, Aditi Sekar, Hank Wu, Noah Sandler
 
-How to run the code: 
+How to run the code:
 
 0) cd Team5/Projects/P1
 1) javac -cp "src/" src/*.java
@@ -16,7 +16,7 @@ How to run the code:
 ### Eric Chu
 
 #### `Pacman-is_ghost_in_range()`
-This method checks the NESW coordinates by checking a shift in location to determine if a ghost resides nearby. 
+This method checks the NESW coordinates by checking a shift in location to determine if a ghost resides nearby.
 
 #### `Map-attack()`
 This method checks if the pacman is in range of a specific ghost identified by the name pass through as a parameter. If it is, the ghost will "attack" the pacman by replacing it's location with Pacman's current location & the gameOver variable will be set to true.
@@ -28,10 +28,10 @@ Using ghost's get_valid_moves, we use the Math.random() utility to randomly sele
 This tests creates random ghosts & PacMan spawns right next to each other to determine the quality of Pacman's is_ghost_in_range()
 
 #### `testMapAttack()`
-This tests places ghosts and a PacMan adjacent to each other & calls upon a specific ghost 'Caspar' to determine if 'Caspar' is in range to attack Pac-Man. It will return true if successful. 
+This tests places ghosts and a PacMan adjacent to each other & calls upon a specific ghost 'Caspar' to determine if 'Caspar' is in range to attack Pac-Man. It will return true if successful.
 
 #### `testGhostMove()`
-This tests check if there is at least one valid move for the Ghost to make, given the enviroment & will return true if possible. 
+This tests check if there is at least one valid move for the Ghost to make, given the enviroment & will return true if possible.
 
 
 ### Aditi Sekar
@@ -46,13 +46,13 @@ This method checks to see if the Pacman is within attack range of a ghost. If th
 This method takes a name, location, and type. It then tries to put it in the designated location. If the function is able to put the object in the specific location then it returns true, else false.
 
 ### `testPacmanMove()`
-This test checks to see if the Pacman moves when there is a valid location available for it to move and then returns the respective boolean. 
+This test checks to see if the Pacman moves when there is a valid location available for it to move and then returns the respective boolean.
 
 ### `testGhostIs_Pacman_In_Range()`
-This test chekcs to see if the is_pacman_in_range returns the correct boolean based on if the pacman is within attack range of a ghost or not. 
+This test chekcs to see if the is_pacman_in_range returns the correct boolean based on if the pacman is within attack range of a ghost or not.
 
 ### `testMapMove()`
-This test checks to see if an object the parameter takes in is placed at the specific location asked and returns the respective boolean accordingly. 
+This test checks to see if an object the parameter takes in is placed at the specific location asked and returns the respective boolean accordingly.
 
 
 ### Hank Wu
@@ -81,14 +81,17 @@ This test checks to see if the pacman is in range and then the map attack functi
 ### `Pacman.get_valid_moves()`
 Determine where Pacman is able to move next. If the locations in front of, behind, to the left, or to the right of pacman contain a wall or a ghost, the location is considered invalid. Returns an ArrayList of Locations.
 
-### `testPacman.get_valid_moves()`
-This test focuses on seeing if the correct locations that the Pacman can move to are returned. 
-
 ### `Ghost.get_valid_moves()`
 Determine where a ghost is able to move next. If the locations in front of, behind, to the left, or to the right of pacman contain a wall, the location is considered invalid. More than one ghost can exist in a single location. Returns an ArrayList of Locations.
 
-### `testGhost.get_valid_moves()`
-
-
 ### `Map.getLoc()`
 Determine what Types are at the parameter location. Returns a HashSet of Map.Type.
+
+### `testGhost.get_valid_moves()`
+This test focuses on seeing if the correct locations that the Ghost can move to are returned.
+
+### `testPacman.get_valid_moves()`
+This test focuses on seeing if the correct locations that the Pacman can move to are returned.
+
+### `testMap.getLoc()`
+This test focuses on ensuring the correct types are returned at any given map location.
