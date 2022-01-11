@@ -108,22 +108,25 @@ public class Map{
 		Location ghost_location = locations.get(Name);
 
 		if (field.get(ghost_location.shift(1,0)).contains(Map.Type.PACMAN)){
+
 			locations.put(Name, ghost_location.shift(1,0));
 			field.remove(ghost_location.shift(1,0));
 			components.remove("pacman");
 
 		} else if (field.get(ghost_location.shift(-1,0)).contains(Map.Type.PACMAN)){
-				locations.put(Name, ghost_location.shift(-1,0));
-				field.remove(ghost_location.shift(-1,0));
-				components.remove("pacman");
 
+			locations.put(Name, ghost_location.shift(-1,0));
+			field.remove(ghost_location.shift(-1,0));
+			components.remove("pacman");
 
 		} else if (field.get(ghost_location.shift(0,1)).contains(Map.Type.PACMAN)){
+
 			locations.put(Name, ghost_location.shift(0,1));
 			field.remove(ghost_location.shift(0,1));
 			components.remove("pacman");
 
 		} else if (field.get(ghost_location.shift(0,-1)).contains(Map.Type.PACMAN)){
+
 			locations.put(Name, ghost_location.shift(0,-1));
 			field.remove(ghost_location.shift(0,-1));
 			components.remove("pacman");
@@ -133,30 +136,35 @@ public class Map{
 			locations.put(Name, ghost_location.shift(-1,-1));
 			field.remove(ghost_location.shift(-1,-1));
 			components.remove("pacman");
+
 		}
 		else if (field.get(ghost_location.shift(1,-1)).contains(Map.Type.PACMAN)){
 
-           		locations.put(Name, ghost_location.shift(1,-1));
-				field.remove(ghost_location.shift(1,-1));
-				components.remove("pacman");
+			locations.put(Name, ghost_location.shift(1,-1));
+			field.remove(ghost_location.shift(1,-1));
+			components.remove("pacman");
+
 		}
 		else if (field.get(ghost_location.shift(-1,1)).contains(Map.Type.PACMAN)){
 	
-           		locations.put(Name, ghost_location.shift(-1,1));
-				field.remove(ghost_location.shift(-1,1));
-				components.remove("pacman");
+			locations.put(Name, ghost_location.shift(-1,1));
+			field.remove(ghost_location.shift(-1,1));
+			components.remove("pacman");
+			
 		}
 		else if (field.get(ghost_location.shift(1,1)).contains(Map.Type.PACMAN)){
 		
-           		locations.put(Name, ghost_location.shift(1,1));
-				field.remove(ghost_location.shift(1,1));
-				components.remove("pacman");
+			locations.put(Name, ghost_location.shift(1,1));
+			field.remove(ghost_location.shift(1,1));
+			components.remove("pacman");
+
 		}else {
+
 			return false;
+
 		}
 
 		gameOver = true;
-
 		return true;
 
 	}
@@ -165,7 +173,7 @@ public class Map{
 		//update locations, components, field, and cookies
 		//the id for a cookie at (10, 1) is tok_x10_y1
 		if(name != null && name.equals("pacman")){
-			
+
 			Location pmLocation = locations.get(name);
 			String cookieLoc = "tok";
 		
