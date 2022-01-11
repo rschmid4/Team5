@@ -85,6 +85,18 @@ public class PacMan{
 		if (myMap.getLoc(myLoc.shift(0, 1)).contains(Map.Type.GHOST)){
 			return true;
 		}
+		if (myMap.getLoc(myLoc.shift(1, 1)).contains(Map.Type.GHOST)){
+			return true;
+		}
+		if (myMap.getLoc(myLoc.shift(-1, -1)).contains(Map.Type.GHOST)){
+			return true;
+		}
+		if (myMap.getLoc(myLoc.shift(1, -1)).contains(Map.Type.GHOST)){
+			return true;
+		}
+		if (myMap.getLoc(myLoc.shift(-1, 1)).contains(Map.Type.GHOST)){
+			return true;
+		}
 
 		return false;
 	}
