@@ -61,6 +61,10 @@ public class Ghost{
 		Location down =  new Location(myLoc.x, myLoc.y+1);
 		Location right =  new Location(myLoc.x+1, myLoc.y);
 		Location left =  new Location(myLoc.x-1, myLoc.y);
+		Location upright = new Location(myLoc.x+1, myLoc.y-1);
+		Location downright = new Location(myLoc.x-1, myLoc.y-1);
+		Location upleft = new Location(myLoc.x+1, myLoc.y+1);
+		Location upright = new Location(myLoc.x+1, myLoc.y-1);
 
 		if(myMap.getLoc(up).contains(Map.Type.PACMAN)){
 			return true;
@@ -74,6 +78,19 @@ public class Ghost{
 		if(myMap.getLoc(right).contains(Map.Type.PACMAN)){
 			return true;
 		}
+		if(myMap.getLoc(downright).contains(Map.Type.PACMAN)){
+			return true;
+		}
+		if(myMap.getLoc(upright).contains(Map.Type.PACMAN)){
+			return true;
+		}
+		if(myMap.getLoc(upleft).contains(Map.Type.PACMAN)){
+			return true;
+		}
+		if(myMap.getLoc(downleft).contains(Map.Type.PACMAN)){
+			return true;
+		}
+		
 		return false;
 	}
 
