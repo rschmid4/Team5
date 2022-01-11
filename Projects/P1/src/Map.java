@@ -99,59 +99,31 @@ public class Map{
       		Location ghost_location = locations.get(Name);
 
        		if (field.get(ghost_location.shift(1,0)).contains(Map.Type.PACMAN)){
-			components.get("pacman");
-			locations.remove("pacman");
-			
-			field.get(locations.get("pacman")).remove(Map.Type.PACMAN);
            		locations.put(Name, ghost_location.shift(1,0));
 
        		} else if (field.get(ghost_location.shift(-1,0)).contains(Map.Type.PACMAN)){
-			components.get("pacman");
-			locations.remove("pacman");
-			
-			field.get(locations.get("pacman")).remove(Map.Type.PACMAN);
           		 locations.put(Name, ghost_location.shift(-1,0));
 
        		} else if (field.get(ghost_location.shift(0,1)).contains(Map.Type.PACMAN)){
-			components.get("pacman");
-			locations.remove("pacman");
-			
-			field.get(locations.get("pacman")).remove(Map.Type.PACMAN);
            		locations.put(Name, ghost_location.shift(0,1));
 
        		} else if (field.get(ghost_location.shift(0,-1)).contains(Map.Type.PACMAN)){
-			components.get("pacman");
-			locations.remove("pacman");
-			
-			field.get(locations.get("pacman")).remove(Map.Type.PACMAN);
            		locations.put(Name, ghost_location.shift(0,-1));
 
        		} else if (field.get(ghost_location.shift(-1,-1)).contains(Map.Type.PACMAN)){
-			components.get("pacman");
-			locations.remove("pacman");
-			
-			field.get(locations.get("pacman")).remove(Map.Type.PACMAN);
+	
            		locations.put(Name, ghost_location.shift(-1,-1));
 		}
 		else if (field.get(ghost_location.shift(1,-1)).contains(Map.Type.PACMAN)){
-			components.get("pacman");
-			locations.remove("pacman");
-			
-			field.get(locations.get("pacman")).remove(Map.Type.PACMAN);
+
            		locations.put(Name, ghost_location.shift(1,-1));
 		}
 		else if (field.get(ghost_location.shift(-1,1)).contains(Map.Type.PACMAN)){
-			components.get("pacman");
-			locations.remove("pacman");
-			
-			field.get(locations.get("pacman")).remove(Map.Type.PACMAN);
+	
            		locations.put(Name, ghost_location.shift(-1,1));
 		}
 		else if (field.get(ghost_location.shift(1,1)).contains(Map.Type.PACMAN)){
-			components.get("pacman");
-			locations.remove("pacman");
-			
-			field.get(locations.get("pacman")).remove(Map.Type.PACMAN);
+		
            		locations.put(Name, ghost_location.shift(1,1));
 		}else {
            		return false;
