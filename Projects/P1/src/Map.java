@@ -134,7 +134,7 @@ public class Map{
 		//update locations, components, field, and cookies
 		//the id for a cookie at (10, 1) is tok_x10_y1
 		if(name != null && name.equals("pacman")){
-		Location pmLoaction = locations.get(name);
+		Location pmLocation = locations.get(name);
 		String cookieLoc = "tok_";
 
 		if (this.getLoc(pmLoaction).contains(Type.COOKIE)) {
