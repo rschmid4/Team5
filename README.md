@@ -2,40 +2,33 @@
 Contributors: Eric Chu, Aditi Sekar, Hank Wu, Noah Sandler
 
 
-[TODO: Add an image of your code playing PacMan]
-
-
-[TODO: A section on how to run the code from the command line
-  - include a code block
-]
-
+How to run the code: 
+0) cd Team5/Projects/P1
+1) javac -cp "src/" src/*.java
+2) java -cp "src/" StartMenu
 
 
 ## Individual Contributions
 
 ### Eric Chu
 
-
-
 #### `Pacman-is_ghost_in_range()`
-blah blah blah
+This method checks the NESW coordinates by checking a shift in location to determine if a ghost resides nearby. 
 
 #### `Map-attack()`
-This method checks if the pacman is in range of the ghost. If it is, the ghost will "attack" the pacman by replacing it's location with Pacman's current location
-& the gameOver variable will be set to true.
+This method checks if the pacman is in range of a specific ghost identified by the name pass through as a parameter. If it is, the ghost will "attack" the pacman by replacing it's location with Pacman's current location & the gameOver variable will be set to true.
 
 #### `Ghost-move()`
-blah blah blah blah blah
+Using ghost's get_valid_moves, we use the Math.random() utility to randomly select one possible move to make.
 
 #### `testGhostInRange()`
-blah blah blah blah blah
+This tests creates random ghosts & PacMan spawns right next to each other to determine the quality of Pacman's is_ghost_in_range()
 
 #### `testMapAttack()`
-blah blah blah blah blah
+This tests places ghosts and a PacMan adjacent to each other & calls upon a specific ghost 'Caspar' to determine if 'Caspar' is in range to attack Pac-Man. It will return true if successful. 
 
 #### `testGhostMove()`
-blah blah blah blah blah
-
+This tests check if there is at least one valid move for the Ghost to make, given the enviroment & will return true if possible. 
 
 
 ### Aditi Sekar
@@ -83,10 +76,7 @@ This test focuses on seeing if the correct locations that the Pacman can move to
 Determine where a ghost is able to move next. If the locations in front of, behind, to the left, or to the right of pacman contain a wall, the location is considered invalid. More than one ghost can exist in a single location. Returns an ArrayList of Locations.
 
 ### `testGhost.get_valid_moves()`
-This test focuses on seeing where the ghost can move next based on the open locations available that isn't occupied by a wall.
+
 
 ### `Map.getLoc()`
 Determine what Types are at the parameter location. Returns a HashSet of Map.Type.
-
-### `testMap.getLoc()`
-This test focuses on seeing if a hashset of the Map.Type types are returned. 
