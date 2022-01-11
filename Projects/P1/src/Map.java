@@ -91,47 +91,75 @@ public class Map{
 	}
 
 	public boolean attack(String Name) {
+
+
+		//  The field, locations, components, and gameOver are all of the relevant variables you can update
+
 		if(Name == null || Name.length() == 0){
 			return false;
 		}
+
+
+		/*
+			private HashMap<Location, HashSet<Type>> field;
+			private HashMap<String, Location> locations;
+			private HashMap<String, JComponent> components;
+		 */
 	
 		
-      		Location ghost_location = locations.get(Name);
+		Location ghost_location = locations.get(Name);
 
-       		if (field.get(ghost_location.shift(1,0)).contains(Map.Type.PACMAN)){
-           		locations.put(Name, ghost_location.shift(1,0));
+		if (field.get(ghost_location.shift(1,0)).contains(Map.Type.PACMAN)){
+			locations.put(Name, ghost_location.shift(1,0));
+			field.remove(ghost_location.shift(1,0));
+			components.remove("pacman");
 
-       		} else if (field.get(ghost_location.shift(-1,0)).contains(Map.Type.PACMAN)){
-          		 locations.put(Name, ghost_location.shift(-1,0));
+		} else if (field.get(ghost_location.shift(-1,0)).contains(Map.Type.PACMAN)){
+				locations.put(Name, ghost_location.shift(-1,0));
+				field.remove(ghost_location.shift(-1,0));
+				components.remove("pacman");
 
-       		} else if (field.get(ghost_location.shift(0,1)).contains(Map.Type.PACMAN)){
-           		locations.put(Name, ghost_location.shift(0,1));
 
-       		} else if (field.get(ghost_location.shift(0,-1)).contains(Map.Type.PACMAN)){
-           		locations.put(Name, ghost_location.shift(0,-1));
+		} else if (field.get(ghost_location.shift(0,1)).contains(Map.Type.PACMAN)){
+			locations.put(Name, ghost_location.shift(0,1));
+			field.remove(ghost_location.shift(0,1));
+			components.remove("pacman");
 
-       		} else if (field.get(ghost_location.shift(-1,-1)).contains(Map.Type.PACMAN)){
-	
-           		locations.put(Name, ghost_location.shift(-1,-1));
+		} else if (field.get(ghost_location.shift(0,-1)).contains(Map.Type.PACMAN)){
+			locations.put(Name, ghost_location.shift(0,-1));
+			field.remove(ghost_location.shift(0,-1));
+			components.remove("pacman");
+
+		} else if (field.get(ghost_location.shift(-1,-1)).contains(Map.Type.PACMAN)){
+
+			locations.put(Name, ghost_location.shift(-1,-1));
+			field.remove(ghost_location.shift(-1,-1));
+			components.remove("pacman");
 		}
 		else if (field.get(ghost_location.shift(1,-1)).contains(Map.Type.PACMAN)){
 
            		locations.put(Name, ghost_location.shift(1,-1));
+				field.remove(ghost_location.shift(1,-1));
+				components.remove("pacman");
 		}
 		else if (field.get(ghost_location.shift(-1,1)).contains(Map.Type.PACMAN)){
 	
            		locations.put(Name, ghost_location.shift(-1,1));
+				field.remove(ghost_location.shift(-1,1));
+				components.remove("pacman");
 		}
 		else if (field.get(ghost_location.shift(1,1)).contains(Map.Type.PACMAN)){
 		
            		locations.put(Name, ghost_location.shift(1,1));
+				field.remove(ghost_location.shift(1,1));
+				components.remove("pacman");
 		}else {
-           		return false;
-       		}
+			return false;
+		}
 
-       		gameOver = true;
+		gameOver = true;
 
-       		return true;
+		return true;
 
 	}
 
