@@ -83,7 +83,10 @@ This test focuses on seeing if the correct locations that the Pacman can move to
 Determine where a ghost is able to move next. If the locations in front of, behind, to the left, or to the right of pacman contain a wall, the location is considered invalid. More than one ghost can exist in a single location. Returns an ArrayList of Locations.
 
 ### `testGhost.get_valid_moves()`
-
+This test focuses on seeing where the ghost can move next based on the open locations available that isn't occupied by a wall.
 
 ### `Map.getLoc()`
 Determine what Types are at the parameter location. Returns a HashSet of Map.Type.
+
+### `testMap.getLoc()`
+This test focuses on seeing if a hashset of the Map.Type types are returned. 
