@@ -19,7 +19,6 @@ public class TestPacManMove extends TestCase {
 		Location left = lc.shift(-1, 0); 
 
 		GhostComponent gc = new GhostComponent(up.x, up.y, 10);
-		GhostComponent gc1 = new GhostComponent(down.x, down.y, 10);
 		GhostComponent gc2 = new GhostComponent(right.x, right.y, 10);
 		GhostComponent gc3 = new GhostComponent(left.x, left.y, 10);
 
