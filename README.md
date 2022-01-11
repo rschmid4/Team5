@@ -1,11 +1,13 @@
 # Pac-Man Remastered
 Contributors: Eric Chu, Aditi Sekar, Hank Wu, Noah Sandler
 
-
 How to run the code: 
 0) cd Team5/Projects/P1
 1) javac -cp "src/" src/*.java
 2) java -cp "src/" StartMenu
+
+<img width="576" alt="Screen Shot 2022-01-11 at 12 09 00 PM" src="https://user-images.githubusercontent.com/75747122/148988966-df4359f3-fa4b-4874-8fbd-2cb852ce383a.png">
+
 
 
 ## Individual Contributions
