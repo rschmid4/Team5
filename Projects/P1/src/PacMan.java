@@ -16,77 +16,62 @@ public class PacMan{
 
 	public ArrayList<Location> get_valid_moves() {
 		ArrayList<Location> valid_moves = new ArrayList<Location>();
-		int x = myLoc.x;
-		int y = myLoc.y;
-		
-		
-		Location left = new Location (x, y+1);
-		Location down = new Location (x+1, y);
-		Location up = new Location(x-1, y);
-		Location right = new Location(x, y-1);
-		
-		
-		
-		if (!myMap.getLoc(right).contains(Map.Type.WALL)) {
+
+		Location up = this.myLoc.shift(0, 1);
+		Location down = this.myLoc.shift(0, -1);
+		Location right = this.myLoc.shift(1, 0);
+		Location left = this.myLoc.shift(-1, 0);
+
+		if (!this.myMap.getLoc(right).contains(Map.Type.WALL)) {
 			valid_moves.add(right);
 		}
-		if (!myMap.getLoc(left).contains(Map.Type.WALL)) {
+		if (!this.myMap.getLoc(left).contains(Map.Type.WALL)) {
 			valid_moves.add(left);
 		}
-		if (!myMap.getLoc(up).contains(Map.Type.WALL)) {
+		if (!this.myMap.getLoc(up).contains(Map.Type.WALL)) {
 			valid_moves.add(up);
 		}
-		if (!myMap.getLoc(down).contains(Map.Type.WALL)) {
+		if (!this.myMap.getLoc(down).contains(Map.Type.WALL)) {
 			valid_moves.add(down);
 		}
 		return valid_moves;
-		
+
 	}
 
 	public boolean move() {
-	ArrayList <Location> valid_moves = get_valid_moves();
-		int numMoves = valid_moves.size();
+		ArrayList <Location> valid_moves = get_valid_moves();
+		int numMoves, rand_idx;
+		Location rand_loc;
 
-		if(numMoves != 0 && valid_moves != null) {
-			int randomLoc = (int) (Math.random()* (numMoves));
-			Location input = valid_moves.get(randomLoc);
-			this.myLoc = input;
-			this.myMap.move(myName, input, Map.Type.PACMAN);
-			return true;
-		} else {
+		numMoves = valid_moves.size();
+		if (numMoves <= 0)
 			return false;
-		}
 
+		rand_idx = (int) (Math.random() * numMoves);
+		rand_loc = valid_moves.get(rand_idx);
+		this.myLoc = rand_loc;
+		return this.myMap.move(this.myName, rand_loc, Map.Type.PACMAN);
 	}
 
 	public boolean is_ghost_in_range() {
-		int x = myLoc.x;
-		int y = myLoc.y;
-		
-		Location left = new Location (x, y+1);
-		Location down = new Location (x+1, y);
-		Location up = new Location(x-1, y);
-		Location right = new Location(x, y-1);
-		
-		if (myMap.getLoc(up).contains(Map.Type.GHOST)){
-			return true;
-		}
-		if (myMap.getLoc(down).contains(Map.Type.GHOST)){
-			return true;
-		}
-		if (myMap.getLoc(right).contains(Map.Type.GHOST)){
-			return true;
-		}
-		if (myMap.getLoc(left).contains(Map.Type.GHOST)){
-			return true;
-		}
-		
+		Location up = this.myLoc.shift(0, 1);
+		Location down = this.myLoc.shift(0, -1);
+		Location right = this.myLoc.shift(1, 0);
+		Location left = this.myLoc.shift(-1, 0);
+		Boolean condition;
 
-		return false;
+		condition = this.myMap.getLoc(up).contains(Map.Type.GHOST) ||
+					this.myMap.getLoc(down).contains(Map.Type.GHOST) ||
+					this.myMap.getLoc(left).contains(Map.Type.GHOST) ||
+					this.myMap.getLoc(right).contains(Map.Type.GHOST);
+
+		return condition;
 	}
 
 	public JComponent consume() {
-		if (this.myMap.getLoc(new Location(myLoc.x, myLoc.y)).contains(Map.Type.COOKIE)) {
+		Location loc = new Location(this.myLoc.x, this.myLoc.y);
+		this.myMap.get_field(loc);
+		if (this.myMap.getLoc(loc).contains(Map.Type.COOKIE)) {
 			return this.myMap.eatCookie(this.myName);
 		}
 

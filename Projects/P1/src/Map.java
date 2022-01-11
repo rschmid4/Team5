@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.ArrayList;
 import javax.swing.JComponent;
 
 public class Map{
@@ -53,116 +54,92 @@ public class Map{
 	}
 
 	public boolean move(String name, Location loc, Type type) {
-		Location currLoc = locations.get(name);
-		locations.put(name, loc);
-		JComponent comp = (JComponent)components.get(name);
-		comp.setLocation(loc.x, loc.y);
-		if(field.get(currLoc)!= null) {
-		field.get(currLoc).remove(type);
-		}
-		if(!field.containsKey(loc)) {
-			field.put(loc, new HashSet <Type>());
-			field.get(loc).add(type);
-			return true;
-		}
 		//update locations, components, and field
 		//use the setLocation method for the component to move it to the new location
-		return false;
+		Location currLoc = locations.get(name);
+		JComponent comp = components.get(name);
+
+		if (currLoc == null || comp == null || !field.containsKey(currLoc) || !field.containsKey(loc))
+			return false;
+
+		locations.put(name, loc);
+		comp.setLocation(loc.x, loc.y);
+
+		field.get(loc).add(type);
+		field.get(currLoc).remove(type);
+
+		return true;
 	}
 
 	public HashSet<Type> getLoc(Location loc) {
 		//wallSet and emptySet will help you write this method
+		HashSet<Type> loc_types = field.get(loc);
+
 		int x = loc.x;
 		int y = loc.y;
-		if (y > dim ||x > dim){  
+		if (y > this.dim || x > this.dim || y <= 0 || x <= 0)
 			return wallSet;
-		}
-		if(y == 0 || x == 0){
-			return wallSet;
-		}
-		if (field.containsKey(loc)){
-			if (field.get(loc).size() > 0){
-				return field.get(loc);
-			} else{
-				return emptySet;
-			}
-		}
-		return emptySet;
+
+		return (loc_types != null && loc_types.size() > 0 ? loc_types : emptySet);
 	}
 
-	public boolean attack(String Name) {
+	public boolean attack(String name) {
 		/*
 			private HashMap<Location, HashSet<Type>> field;
 			private HashMap<String, Location> locations;
 			private HashMap<String, JComponent> components;
-		 */
+		*/
+		ArrayList<Location> lst = new ArrayList<Location>();
+		Location ghost_location;
+		Boolean ret = false;
+
+		ghost_location = locations.get(name);
+		lst.add(ghost_location.shift(1,0));
+		lst.add(ghost_location.shift(-1,0));
+		lst.add(ghost_location.shift(0,1));
+		lst.add(ghost_location.shift(0,-1));
+
 		//  The field, locations, components, and gameOver are all of the relevant variables you can update
-		if(Name == null || Name.length() == 0){
-			return false;
-		}
-	
-		Location ghost_location = locations.get(Name);
+		if (name == null || name.length() == 0)
+			return ret;
 
-		if (field.get(ghost_location.shift(1,0)).contains(Map.Type.PACMAN)){
-
-			locations.put(Name, ghost_location.shift(1,0));
-			field.remove(ghost_location.shift(1,0));
-			components.remove("pacman");
-
-		} else if (field.get(ghost_location.shift(-1,0)).contains(Map.Type.PACMAN)){
-
-			locations.put(Name, ghost_location.shift(-1,0));
-			field.remove(ghost_location.shift(-1,0));
-			components.remove("pacman");
-
-		} else if (field.get(ghost_location.shift(0,1)).contains(Map.Type.PACMAN)){
-
-			locations.put(Name, ghost_location.shift(0,1));
-			field.remove(ghost_location.shift(0,1));
-			components.remove("pacman");
-
-		} else if (field.get(ghost_location.shift(0,-1)).contains(Map.Type.PACMAN)){
-
-			locations.put(Name, ghost_location.shift(0,-1));
-			field.remove(ghost_location.shift(0,-1));
-			components.remove("pacman");
-
-		}else {
-
-			return false;
-
+		for (Location loc : lst) {
+			if (field.get(loc).contains(Map.Type.PACMAN)) {
+				locations.put(name, loc);
+				field.remove(loc);
+				components.remove("pacman");
+				ret = true;
+				gameOver = true;
+				break;
+			}
 		}
 
-		gameOver = true;
-		return true;
-
+		return ret;
 	}
 
 	public JComponent eatCookie(String name) {
 		//update locations, components, field, and cookies
 		//the id for a cookie at (10, 1) is tok_x10_y1
-		if(name != null && name.equals("pacman")){
+		String id_prefix = "tok";
+		String cookie;
+		JComponent cookieComp;
+		Location pmLocation;
 
-			Location pmLocation = locations.get(name);
-			String cookieLoc = "tok";
-		
-			if (this.getLoc(pmLocation).contains(Type.COOKIE)) {
-				// Update the map
-				String cookie = (cookieLoc + "_x" + pmLocation.x + "_y" + pmLocation.y);
-				JComponent cookieComp = components.get(cookie);
-				field.get(pmLocation).remove(Type.COOKIE);
-				field.put(pmLocation, field.get(pmLocation));
-				components.remove(cookie);
-				locations.remove(cookie);
-				this.cookies++;
-				return cookieComp;
-				
-			} else{
-				return null;
-			}
+		pmLocation = locations.get(name);
+		if (pmLocation == null || !name.equals("pacman") || !getLoc(pmLocation).contains(Type.COOKIE)) {
+			return null;
 		}
+		// Update the map
+		cookie = (id_prefix + "_x" + pmLocation.x + "_y" + pmLocation.y);
+		cookieComp = components.get(cookie);
+		field.get(pmLocation).remove(Type.COOKIE);
+		components.remove(cookie);
+		locations.remove(cookie);
+		this.cookies++;
+		return cookieComp;
+	}
 
-		return null;
-
+	public void get_field(Location loc) {
+		System.out.println(field.get(loc).toString() + "\n");
 	}
 }
