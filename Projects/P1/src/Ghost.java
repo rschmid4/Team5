@@ -62,6 +62,7 @@ public class Ghost{
        	if (moves_size > 0 && moves != null) {
 	       int size = (int) Math.floor(Math.random() * (moves_size ));
 	       Location input = moves.get(size);
+		this.myLoc = input;
            myMap.move(myName, input , Map.Type.GHOST);
 	       return true;
        	}else {
