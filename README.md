@@ -50,11 +50,13 @@ This method checks to see if the Pacman is within attack range of a ghost. If th
 This method takes a name, location, and type. It then tries to put it in the designated location. If the function is able to put the object in the specific location then it returns true, else false.
 
 ### `testPacmanMove()`
+This test checks to see if the Pacman moves when there is a valid location available for it to move and then returns the respective boolean. 
 
 ### `testGhostIs_Pacman_In_Range()`
+This test chekcs to see if the is_pacman_in_range returns the correct boolean based on if the pacman is within attack range of a ghost or not. 
 
 ### `testMapMove()`
-
+This test checks to see if an object the parameter takes in is placed at the specific location asked and returns the respective boolean accordingly. 
 
 
 ### Hank Wu
