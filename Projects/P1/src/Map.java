@@ -94,9 +94,7 @@ public class Map{
 		if(Name == null || Name.length() == 0){
 			return false;
 		}
-		if(!((Name == "Pinky") || (Name == "Clyde") ||  (Name == "Inky") || (Name == "Blinky") )){
-			return false;
-		}
+	
 		
       		Location ghost_location = locations.get(Name);
 
