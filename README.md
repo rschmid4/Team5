@@ -67,13 +67,13 @@ Ghost attack checks if any pacman is in range. If is_pacman_in_range() function 
 The eatCookies function is responsible for updating all properties of map object such as locations, components, field. At the end, it returns cookie component, null otherwise.
 
 ### `testPacManConsume()`
-This test checks to see if the method correctly returns a cookie contained in the current spot, if the location of the current pacman object doesn't contain cookies it tests to see if null is returned. 
+This test checks to see if the method correctly returns a cookie contained in the current spot, if the location of the current pacman object doesn't contain cookies it tests to see if null is returned. This file contains two tests, testConsume() and testConsumeFail. The first test, testConsume(), first creates map that contains pacman and cookie component at the same location. This assertTrue should pass when consume() function return the same cookie component. The other test, testConsumeFail(), test the opposite logic that consume() function should return null when pacman and cookie are in different location.
 
 ### `testeatCookie()`
-This test checks to see if all properties of map object are updated and then checks to see if the method returns cookie component if it is updated otherwise it returns null.
+This test checks to see if all properties of map object are updated and then checks to see if the method returns cookie component if it is updated otherwise it returns null. This file also includes two test, testMapEatCookie() and testMapEatCookieFail(). A map including pacman and cookie components at the same location is created in testMapEatCookie(), and the assertTrue should pass because they should have the same cookie component. On the other hand, testMapEatCookieFail() should assertTrue because eatCookie() function should return null.
 
 ### `testGhostAttack()`
-This test checks to see if the pacman is in range and then the map attack function is called if the pacman is in range and true is returned. 
+This test checks to see if the pacman is in range and then the map attack function is called if the pacman is in range and true is returned. This file contains both testAttack() and testAttackFail(). testAttack() creates a map that contains pacman and ghost components. The assertTrue should pass the test because the pacman is in the range of ghost. On the other hand, testAttackFail should assertFalse because the pacman isn't in the range of ghost.
 
 
 ### Noah Sandler
