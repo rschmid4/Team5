@@ -72,8 +72,8 @@ public class Map{
 
 	public HashSet<Type> getLoc(Location loc) {
 		//wallSet and emptySet will help you write this method
-		Location x = loc.x;
-		Location y = loc.y;
+		int x = loc.x;
+		int y = loc.y;
 		if (y > dim || y == 0 || x > dim || x == 0){
 			return wallSet;
 		}
