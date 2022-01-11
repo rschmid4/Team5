@@ -16,31 +16,31 @@ public class PacMan{
 
 	public ArrayList<Location> get_valid_moves() {
 		ArrayList<Location> valid_moves = new ArrayList<Location>();
-		
+		ArrayList<Location> moves_to_remove = new ArrayList<Location>();
 
 		/* determime neighbors in all 4 possible directions */
-		Location right = new Location(myLoc.shift(0, 1));
-		Location down = new Location(myLoc.shift(1, 0));
-		Location left= new Location(myLoc.shift(0, -1));
-		Location up = new Location(myLoc.shift(-1, 0));
+		valid_moves.add(myLoc.shift(0, 1));
+		valid_moves.add(myLoc.shift(1, 0));
+		valid_moves.add(myLoc.shift(0, -1));
+		valid_moves.add(myLoc.shift(-1, 0));
 
-		if(myMap.getLoc(up) == null || myMap.getLoc(up).size() == 0){
-                        valid_moves.add(up);
-                }
-                if(myMap.getLoc(down) == null ||myMap.getLoc(down).size() == 0){
-                        valid_moves.add(down);
-                }
-                if(myMap.getLoc(left) == null ||myMap.getLoc(left).size() == 0){
-                        valid_moves.add(left);
-                }
-                if(myMap.getLoc(right) == null ||myMap.getLoc(right).size() == 0){
-                        valid_moves.add(right);
-                }
+		/*
+		* figure out which neighboring moves are invalid and remove them from valid_moves.
+		* an invalid move is one where the location is occupied by a wall, ghost.
+		*/
+		for (Location neighbor : valid_moves) {
+			HashSet<Map.Type> contents = myMap.getLoc(neighbor);
+			Boolean condition = contents == null ||
+				contents.contains(Map.Type.GHOST) ||
+				contents.contains(Map.Type.WALL);
 
-                return valid_moves;
+			if (condition)
+				moves_to_remove.add(neighbor);
+		}
+		valid_moves.removeAll(moves_to_remove);
 
-}
-
+		return valid_moves;
+	}
 
 	public boolean move() {
 	ArrayList <Location> valid_moves = get_valid_moves();
