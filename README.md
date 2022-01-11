@@ -65,6 +65,15 @@ Ghost attack checks if any pacman is in range. If is_pacman_in_range() function 
 ### `Map eatCookie()`
 The eatCookies function is responsible for updating all properties of map object such as locations, components, field. At the end, it returns cookie component, null otherwise.
 
+### `testPacManConsume()`
+This test checks to see if the method correctly returns a cookie contained in the current spot, if the location of the current pacman object doesn't contain cookies it tests to see if null is returned. 
+
+### `testeatCookie()`
+This test checks to see if all properties of map object are updated and then checks to see if the method returns cookie component if it is updated otherwise it returns null.
+
+### `testGhostAttack()`
+This test checks to see if the pacman is in range and then the map attack function is called if the pacman is in range and true is returned. 
+
 
 ### Noah Sandler
 
