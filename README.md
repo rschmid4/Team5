@@ -59,7 +59,7 @@ This method takes a name, location, and type. It then tries to put it in the des
 
 ### Hank Wu
 
-### Pacman consume()
+### `Pacman consume()`
 This function check to see if the location of current pacman object contains cookies. If a any cookie contains in the current spot, then a cookie component is returned, null otherwise.
 
 ### `Ghost attack()`
