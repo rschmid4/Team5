@@ -16,10 +16,10 @@ public class Ghost{
 
 
 		/* determime neighbors in all 4 possible directions */
-		Location right = valid_moves.add(myLoc.shift(0, 1));
-		Location down = valid_moves.add(myLoc.shift(1, 0));
-		Location left = valid_moves.add(myLoc.shift(0, -1));
-		Location up = valid_moves.add(myLoc.shift(-1, 0));
+		Location right = new Location(myLoc.shift(0, 1));
+		Location down = new Location(myLoc.shift(1, 0));
+		Location left= new Location(myLoc.shift(0, -1));
+		Location up = new Location(myLoc.shift(-1, 0));
 
 		if(myMap.getLoc(up) == null || myMap.getLoc(up).size() == 0){
                         valid_moves.add(up);
