@@ -47,7 +47,7 @@ public class PacMan{
 	ArrayList <Location> valid_moves = get_valid_moves();
 		int numMoves = valid_moves.size();
 
-		if(numMoves != 0) {
+		if(numMoves != 0 && valid_moves != null) {
 			int randomLoc = (int) (Math.random()* (numMoves));
 			Location input = valid_moves.get(randomLoc);
 			this.myLoc = input;
