@@ -33,10 +33,4 @@ class Location {
     public String toString() {
         return (String) ("(" + this.x  + ", " + this.y + ")");
     }
-
-
-
-
-
-
 }
