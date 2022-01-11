@@ -16,30 +16,46 @@ public class PacMan{
 
 	public ArrayList<Location> get_valid_moves() {
 		ArrayList<Location> valid_moves = new ArrayList<Location>();
-		ArrayList<Location> moves_to_remove = new ArrayList<Location>();
-
-		/* determime neighbors in all 4 possible directions */
-		valid_moves.add(myLoc.shift(0, 1));
-		valid_moves.add(myLoc.shift(1, 0));
-		valid_moves.add(myLoc.shift(0, -1));
-		valid_moves.add(myLoc.shift(-1, 0));
-
-		/*
-		* figure out which neighboring moves are invalid and remove them from valid_moves.
-		* an invalid move is one where the location is occupied by a wall, ghost.
-		*/
-		for (Location neighbor : valid_moves) {
-			HashSet<Map.Type> contents = myMap.getLoc(neighbor);
-			Boolean condition = contents == null ||
-				contents.contains(Map.Type.GHOST) ||
-				contents.contains(Map.Type.WALL);
-
-			if (condition)
-				moves_to_remove.add(neighbor);
+		int x = myloc.x;
+		int y = myloc.y;
+		
+		Location upright = new Location(x-1,y-1);
+		Location upleft = new Location(x-1, y+1);
+		Location downright = new Location(x+1,y-1);
+		Location downleft = new Location(x+1,y+1);
+		Location left = new Location (x, y+1);
+		Location down = new Location (x+1, y);
+		Location up = new Location(x-1, y);
+		Location right = new Location(x, y-1);
+		
+		
+		if (!myMap.getLoc(upright).contains(Map.Type.WALL)  && !myMap.getLoc(upright).contains(Map.Type.GHOST) {
+			valid_moves.add(upright);
 		}
-		valid_moves.removeAll(moves_to_remove);
-
+		if (!myMap.getLoc(upleft).contains(Map.Type.WALL)  && !myMap.getLoc(upleft).contains(Map.Type.GHOST) {
+			valid_moves.add(upleft);
+		}
+		if (!myMap.getLoc(downleft).contains(Map.Type.WALL)  && !myMap.getLoc(downleft).contains(Map.Type.GHOST) {
+			valid_moves.add(downleft);
+		}
+		    
+		if (!myMap.getLoc(downright).contains(Map.Type.WALL)  && !myMap.getLoc(downright).contains(Map.Type.GHOST) {
+			valid_moves.add(downright);
+		}
+		if (!myMap.getLoc(right).contains(Map.Type.WALL)  && !myMap.getLoc(right).contains(Map.Type.GHOST) {
+			valid_moves.add(right);
+		}
+		if (!myMap.getLoc(left).contains(Map.Type.WALL)  && !myMap.getLoc(left).contains(Map.Type.GHOST) {
+			valid_moves.add(left);
+		}
+		if (!myMap.getLoc(up).contains(Map.Type.WALL)  && !myMap.getLoc(up).contains(Map.Type.GHOST) {
+			valid_moves.add(up);
+		}
+		if (!myMap.getLoc(down).contains(Map.Type.WALL)  && !myMap.getLoc(down).contains(Map.Type.GHOST) {
+			valid_moves.add(down);
+		}
 		return valid_moves;
+		
 	}
 
 	public boolean move() {
