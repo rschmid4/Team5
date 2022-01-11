@@ -29,29 +29,29 @@ public class PacMan{
 		Location right = new Location(x, y-1);
 		
 		
-		if (!myMap.getLoc(upright).contains(Map.Type.WALL)  && !myMap.getLoc(upright).contains(Map.Type.GHOST)) {
+		if (!myMap.getLoc(upright).contains(Map.Type.WALL)) {
 			valid_moves.add(upright);
 		}
-		if (!myMap.getLoc(upleft).contains(Map.Type.WALL)  && !myMap.getLoc(upleft).contains(Map.Type.GHOST)) {
+		if (!myMap.getLoc(upleft).contains(Map.Type.WALL)) {
 			valid_moves.add(upleft);
 		}
-		if (!myMap.getLoc(downleft).contains(Map.Type.WALL)  && !myMap.getLoc(downleft).contains(Map.Type.GHOST)) {
+		if (!myMap.getLoc(downleft).contains(Map.Type.WALL)) {
 			valid_moves.add(downleft);
 		}
 		    
-		if (!myMap.getLoc(downright).contains(Map.Type.WALL)  && !myMap.getLoc(downright).contains(Map.Type.GHOST)) {
+		if (!myMap.getLoc(downright).contains(Map.Type.WALL)) {
 			valid_moves.add(downright);
 		}
-		if (!myMap.getLoc(right).contains(Map.Type.WALL)  && !myMap.getLoc(right).contains(Map.Type.GHOST)) {
+		if (!myMap.getLoc(right).contains(Map.Type.WALL)) {
 			valid_moves.add(right);
 		}
-		if (!myMap.getLoc(left).contains(Map.Type.WALL)  && !myMap.getLoc(left).contains(Map.Type.GHOST)) {
+		if (!myMap.getLoc(left).contains(Map.Type.WALL)) {
 			valid_moves.add(left);
 		}
-		if (!myMap.getLoc(up).contains(Map.Type.WALL)  && !myMap.getLoc(up).contains(Map.Type.GHOST)) {
+		if (!myMap.getLoc(up).contains(Map.Type.WALL)) {
 			valid_moves.add(up);
 		}
-		if (!myMap.getLoc(down).contains(Map.Type.WALL)  && !myMap.getLoc(down).contains(Map.Type.GHOST)) {
+		if (!myMap.getLoc(down).contains(Map.Type.WALL)) {
 			valid_moves.add(down);
 		}
 		return valid_moves;
