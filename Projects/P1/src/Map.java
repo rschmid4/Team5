@@ -74,7 +74,10 @@ public class Map{
 		//wallSet and emptySet will help you write this method
 		int x = loc.x;
 		int y = loc.y;
-		if (y > dim || y == 0 || x > dim || x == 0){
+		if (y > dim ||x > dim){  
+			return wallSet;
+		}
+		if(y == 0 || x == 0){
 			return wallSet;
 		}
 		if (field.containsKey(loc)){
