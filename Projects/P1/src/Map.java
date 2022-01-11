@@ -91,19 +91,15 @@ public class Map{
 	}
 
 	public boolean attack(String Name) {
-
-
-		//  The field, locations, components, and gameOver are all of the relevant variables you can update
-		if(Name == null || Name.length() == 0){
-			return false;
-		}
-
-
 		/*
 			private HashMap<Location, HashSet<Type>> field;
 			private HashMap<String, Location> locations;
 			private HashMap<String, JComponent> components;
 		 */
+		//  The field, locations, components, and gameOver are all of the relevant variables you can update
+		if(Name == null || Name.length() == 0){
+			return false;
+		}
 	
 		Location ghost_location = locations.get(Name);
 
