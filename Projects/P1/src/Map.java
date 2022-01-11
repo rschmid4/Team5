@@ -88,27 +88,34 @@ public class Map{
 	}
 
 	public boolean attack(String Name) {
-       Location ghost_location = locations.get(Name);
+		if(Name == null || Name.length() == 0){
+			return false;
+		}
+		if(!((Name == "Pinky") || (Name == "Clyde") ||  (Name == "Inky") || (Name == "Blinky") )){
+			return false;
+		}
+		
+      		Location ghost_location = locations.get(Name);
 
-       if (field.get(ghost_location.shift(1,0)).contains(Map.Type.PACMAN)){
-           locations.put(Name, ghost_location.shift(1,0));
+       		if (field.get(ghost_location.shift(1,0)).contains(Map.Type.PACMAN)){
+           		locations.put(Name, ghost_location.shift(1,0));
 
-       } else if (field.get(ghost_location.shift(-1,0)).contains(Map.Type.PACMAN)){
-           locations.put(Name, ghost_location.shift(-1,0));
+       		} else if (field.get(ghost_location.shift(-1,0)).contains(Map.Type.PACMAN)){
+          		 locations.put(Name, ghost_location.shift(-1,0));
 
-       } else if (field.get(ghost_location.shift(0,1)).contains(Map.Type.PACMAN)){
-           locations.put(Name, ghost_location.shift(0,1));
+       		} else if (field.get(ghost_location.shift(0,1)).contains(Map.Type.PACMAN)){
+           		locations.put(Name, ghost_location.shift(0,1));
 
-       } else if (field.get(ghost_location.shift(0,-1)).contains(Map.Type.PACMAN)){
-           locations.put(Name, ghost_location.shift(0,-1));
+       		} else if (field.get(ghost_location.shift(0,-1)).contains(Map.Type.PACMAN)){
+           		locations.put(Name, ghost_location.shift(0,-1));
 
-       } else {
-           return false;
-       }
+       		} else {
+           		return false;
+       		}
 
-       gameOver = true;
+       		gameOver = true;
 
-       return true;
+       		return true;
 
 	}
 
