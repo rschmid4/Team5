@@ -138,8 +138,4 @@ public class Map{
 		this.cookies++;
 		return cookieComp;
 	}
-
-	public void get_field(Location loc) {
-		System.out.println(field.get(loc).toString() + "\n");
-	}
 }
