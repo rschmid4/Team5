@@ -5,10 +5,7 @@ import java.io.*;
 public class TestGhostInRange extends TestCase {
 
 	public void testGhostInRange() throws FileNotFoundException {
-		PacMan pm;
-		Location lc;
-		Map mp;
-		Ghost ghost;
+		
 		PacMan pac;
 		NoFrame frame1 = new NoFrame();
 		Location pacLoc = new Location(10,10);
@@ -22,10 +19,7 @@ public class TestGhostInRange extends TestCase {
 	}
 
 	public void testGhostInRange2() throws FileNotFoundException {
-		PacMan pm;
-		Location lc;
-		Map mp;
-		Ghost ghost;
+		
 		PacMan pac;
 		NoFrame frame1 = new NoFrame();
 		Location pacLoc = new Location(10,10);
