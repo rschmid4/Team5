@@ -73,11 +73,17 @@ public class Map{
 	public HashSet<Type> getLoc(Location loc) {
 		//wallSet and emptySet will help you write this method
 
-		// check if loc is actually a location on the map
-		if (!field.containsKey(loc)) return null;
-
-		// otherwise return the corresponding set of types
-		return field.get(loc);
+		if (loc.x > dim || loc.y > dim || loc.x == 0 || loc.y == 0){
+			return wallSet;
+		}
+		if (field.containsKey(loc)){
+			if (field.get(loc).size() > 0){
+				return field.get(loc);
+			} else{
+				return emptySet;
+			}
+		}
+		return emptySet;
 	}
 
 	public boolean attack(String Name) {
