@@ -3,6 +3,11 @@ import java.awt.Color;
 import java.io.*;
 
 public class TestGhostInRange extends TestCase {
+	
+	PacMan pm;
+	Location lc;
+	Map mp;
+	Ghost ghost;
 
 	PacMan pm;
 	Location lc;
