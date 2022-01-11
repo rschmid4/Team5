@@ -94,7 +94,6 @@ public class Map{
 
 
 		//  The field, locations, components, and gameOver are all of the relevant variables you can update
-
 		if(Name == null || Name.length() == 0){
 			return false;
 		}
@@ -106,7 +105,6 @@ public class Map{
 			private HashMap<String, JComponent> components;
 		 */
 	
-		
 		Location ghost_location = locations.get(Name);
 
 		if (field.get(ghost_location.shift(1,0)).contains(Map.Type.PACMAN)){
@@ -167,24 +165,27 @@ public class Map{
 		//update locations, components, field, and cookies
 		//the id for a cookie at (10, 1) is tok_x10_y1
 		if(name != null && name.equals("pacman")){
-		Location pmLocation = locations.get(name);
-		String cookieLoc = "tok_";
+			
+			Location pmLocation = locations.get(name);
+			String cookieLoc = "tok";
 		
-		if (this.getLoc(pmLocation).contains(Type.COOKIE)) {
-			// Update the map
-			String cookie = (cookieLoc + "x" + pmLocation.x + "_y" + pmLocation.y);
-			JComponent cookieComp = components.get(cookie);
-			field.get(pmLocation).remove(Type.COOKIE);
-			field.put(pmLocation, field.get(pmLocation));
-			components.remove(cookie);
-			locations.remove(cookie);
-			this.cookies++;
-			return cookieComp;
-		} else{
-			return null;
-		}
+			if (this.getLoc(pmLocation).contains(Type.COOKIE)) {
+				// Update the map
+				String cookie = (cookieLoc + "_x" + pmLocation.x + "_y" + pmLocation.y);
+				JComponent cookieComp = components.get(cookie);
+				field.get(pmLocation).remove(Type.COOKIE);
+				field.put(pmLocation, field.get(pmLocation));
+				components.remove(cookie);
+				locations.remove(cookie);
+				this.cookies++;
+				return cookieComp;
+				
+			} else{
+				return null;
+			}
 		}
 
 		return null;
+
 	}
 }
