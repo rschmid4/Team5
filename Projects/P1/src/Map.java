@@ -141,8 +141,8 @@ public class Map{
 			// Update the map
 			String cookie = (cookieLoc + "x" + pmLocation.x + "_y" + pmLocation.y);
 			JComponent cookieComp = components.get(cookie);
-			field.get(pmLoaction).remove(Type.COOKIE);
-			field.put(pmLocation, field.get(pmLoaction));
+			field.get(pmLocation).remove(Type.COOKIE);
+			field.put(pmLocation, field.get(pmLocation));
 			components.remove(cookie);
 			locations.remove(cookie);
 			this.cookies++;
