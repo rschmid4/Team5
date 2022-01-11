@@ -127,33 +127,6 @@ public class Map{
 			field.remove(ghost_location.shift(0,-1));
 			components.remove("pacman");
 
-		} else if (field.get(ghost_location.shift(-1,-1)).contains(Map.Type.PACMAN)){
-
-			locations.put(Name, ghost_location.shift(-1,-1));
-			field.remove(ghost_location.shift(-1,-1));
-			components.remove("pacman");
-
-		}
-		else if (field.get(ghost_location.shift(1,-1)).contains(Map.Type.PACMAN)){
-
-			locations.put(Name, ghost_location.shift(1,-1));
-			field.remove(ghost_location.shift(1,-1));
-			components.remove("pacman");
-
-		}
-		else if (field.get(ghost_location.shift(-1,1)).contains(Map.Type.PACMAN)){
-	
-			locations.put(Name, ghost_location.shift(-1,1));
-			field.remove(ghost_location.shift(-1,1));
-			components.remove("pacman");
-			
-		}
-		else if (field.get(ghost_location.shift(1,1)).contains(Map.Type.PACMAN)){
-		
-			locations.put(Name, ghost_location.shift(1,1));
-			field.remove(ghost_location.shift(1,1));
-			components.remove("pacman");
-
 		}else {
 
 			return false;
