@@ -73,28 +73,38 @@ public class PacMan{
 	}
 
 	public boolean is_ghost_in_range() {
-		if (myMap.getLoc(myLoc.shift(1, 0)).contains(Map.Type.GHOST)){
+		
+		Location upright = new Location(x-1,y-1);
+		Location upleft = new Location(x-1, y+1);
+		Location downright = new Location(x+1,y-1);
+		Location downleft = new Location(x+1,y+1);
+		Location left = new Location (x, y+1);
+		Location down = new Location (x+1, y);
+		Location up = new Location(x-1, y);
+		Location right = new Location(x, y-1);
+		
+		if (myMap.getLoc(up).contains(Map.Type.GHOST)){
 			return true;
 		}
-		if (myMap.getLoc(myLoc.shift(0, -1)).contains(Map.Type.GHOST)){
+		if (myMap.getLoc(down).contains(Map.Type.GHOST)){
 			return true;
 		}
-		if (myMap.getLoc(myLoc.shift(-1, 0)).contains(Map.Type.GHOST)){
+		if (myMap.getLoc(right).contains(Map.Type.GHOST)){
 			return true;
 		}
-		if (myMap.getLoc(myLoc.shift(0, 1)).contains(Map.Type.GHOST)){
+		if (myMap.getLoc(left).contains(Map.Type.GHOST)){
 			return true;
 		}
-		if (myMap.getLoc(myLoc.shift(1, 1)).contains(Map.Type.GHOST)){
+		if (myMap.getLoc(upright).contains(Map.Type.GHOST)){
 			return true;
 		}
-		if (myMap.getLoc(myLoc.shift(-1, -1)).contains(Map.Type.GHOST)){
+		if (myMap.getLoc(upleft).contains(Map.Type.GHOST)){
 			return true;
 		}
-		if (myMap.getLoc(myLoc.shift(1, -1)).contains(Map.Type.GHOST)){
+		if (myMap.getLoc(downright).contains(Map.Type.GHOST)){
 			return true;
 		}
-		if (myMap.getLoc(myLoc.shift(-1, 1)).contains(Map.Type.GHOST)){
+		if (myMap.getLoc(downleft).contains(Map.Type.GHOST)){
 			return true;
 		}
 
