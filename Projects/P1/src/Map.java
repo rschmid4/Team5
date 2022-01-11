@@ -109,7 +109,18 @@ public class Map{
        		} else if (field.get(ghost_location.shift(0,-1)).contains(Map.Type.PACMAN)){
            		locations.put(Name, ghost_location.shift(0,-1));
 
-       		} else {
+       		} else if (field.get(ghost_location.shift(-1,-1)).contains(Map.Type.PACMAN)){
+           		locations.put(Name, ghost_location.shift(-1,-1));
+		}
+		else if (field.get(ghost_location.shift(1,-1)).contains(Map.Type.PACMAN)){
+           		locations.put(Name, ghost_location.shift(1,-1));
+		}
+		else if (field.get(ghost_location.shift(-1,1)).contains(Map.Type.PACMAN)){
+           		locations.put(Name, ghost_location.shift(-1,1));
+		}
+		else if (field.get(ghost_location.shift(1,1)).contains(Map.Type.PACMAN)){
+           		locations.put(Name, ghost_location.shift(1,1));
+		}else {
            		return false;
        		}
 
