@@ -16,29 +16,14 @@ public class Ghost{
 		int x = myLoc.x;
 		int y = myLoc.y;
 		
-		Location upright = new Location(x-1,y-1);
-		Location upleft = new Location(x-1, y+1);
-		Location downright = new Location(x+1,y-1);
-		Location downleft = new Location(x+1,y+1);
+		
 		Location left = new Location (x, y+1);
 		Location down = new Location (x+1, y);
 		Location up = new Location(x-1, y);
 		Location right = new Location(x, y-1);
 		
 		
-		if (!myMap.getLoc(upright).contains(Map.Type.WALL)) {
-			valid_moves.add(upright);
-		}
-		if (!myMap.getLoc(upleft).contains(Map.Type.WALL)) {
-			valid_moves.add(upleft);
-		}
-		if (!myMap.getLoc(downleft).contains(Map.Type.WALL)) {
-			valid_moves.add(downleft);
-		}
-		    
-		if (!myMap.getLoc(downright).contains(Map.Type.WALL)) {
-			valid_moves.add(downright);
-		}
+		
 		if (!myMap.getLoc(right).contains(Map.Type.WALL)) {
 			valid_moves.add(right);
 		}
@@ -76,11 +61,7 @@ public class Ghost{
 		Location down =  new Location(myLoc.x, myLoc.y+1);
 		Location right =  new Location(myLoc.x+1, myLoc.y);
 		Location left =  new Location(myLoc.x-1, myLoc.y);
-		Location upright = new Location(myLoc.x+1, myLoc.y-1);
-		Location downright = new Location(myLoc.x-1, myLoc.y-1);
-		Location upleft = new Location(myLoc.x+1, myLoc.y+1);
-		Location downleft = new Location(myLoc.x-1, myLoc.y+1);
-
+		
 		if(myMap.getLoc(up).contains(Map.Type.PACMAN)){
 			return true;
 		}
@@ -93,18 +74,7 @@ public class Ghost{
 		if(myMap.getLoc(right).contains(Map.Type.PACMAN)){
 			return true;
 		}
-		if(myMap.getLoc(downright).contains(Map.Type.PACMAN)){
-			return true;
-		}
-		if(myMap.getLoc(upright).contains(Map.Type.PACMAN)){
-			return true;
-		}
-		if(myMap.getLoc(upleft).contains(Map.Type.PACMAN)){
-			return true;
-		}
-		if(myMap.getLoc(downleft).contains(Map.Type.PACMAN)){
-			return true;
-		}
+
 		
 		return false;
 	}
