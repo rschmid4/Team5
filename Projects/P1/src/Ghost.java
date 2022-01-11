@@ -59,14 +59,14 @@ public class Ghost{
 		ArrayList<Location> moves = get_valid_moves();
 		int moves_size = moves.size();
 
-       if (moves_size > 0) {
+       	if (moves_size > 0 && moves != null) {
 	       int size = (int) Math.floor(Math.random() * (moves_size ));
 	       Location input = moves.get(size);
            myMap.move(myName, input , Map.Type.GHOST);
 	       return true;
-       }
-
-       return false;
+       	}else {
+		return false;
+      	 }
 	}
 
 	public boolean is_pacman_in_range() {
