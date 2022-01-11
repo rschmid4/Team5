@@ -141,7 +141,7 @@ public class Map{
 		if(name != null && name.equals("pacman")){
 		Location pmLocation = locations.get(name);
 		String cookieLoc = "tok_";
-
+		
 		if (this.getLoc(pmLocation).contains(Type.COOKIE)) {
 			// Update the map
 			String cookie = (cookieLoc + "x" + pmLocation.x + "_y" + pmLocation.y);
@@ -152,6 +152,8 @@ public class Map{
 			locations.remove(cookie);
 			this.cookies++;
 			return cookieComp;
+		} else{
+			return null;
 		}
 		}
 
