@@ -124,7 +124,7 @@ public class Map{
 			field.get(pmLoaction).remove(Type.COOKIE);
 			components.remove("tok_x"+pmLoaction.x+"_y"+pmLoaction.y);
 			locations.remove("tok_x"+pmLoaction.x+"_y"+pmLoaction.y);
-			this.cookies -= 1;
+			this.cookies++;
 			return cookieComp;
 		}
 
