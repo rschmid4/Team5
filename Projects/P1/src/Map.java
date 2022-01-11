@@ -137,7 +137,7 @@ public class Map{
 		Location pmLocation = locations.get(name);
 		String cookieLoc = "tok_";
 
-		if (this.getLoc(pmLoaction).contains(Type.COOKIE)) {
+		if (this.getLoc(pmLocation).contains(Type.COOKIE)) {
 			// Update the map
 			String cookie = (cookieLoc + "x" + pmLocation.x + "_y" + pmLocation.y);
 			JComponent cookieComp = components.get(cookie);
