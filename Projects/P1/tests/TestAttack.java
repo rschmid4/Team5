@@ -1,17 +1,13 @@
 import junit.framework.*;
 import java.awt.Color;
 import java.io.*;
-
 import javax.swing.JComponent;
 
 public class TestAttack extends TestCase {
 
-	public void testAttack() throws FileNotFoundException{
-
+	public void testAttack() {
 		Map m = new Map(10);
-
 		Ghost g = new Ghost("ghost1", new Location(4, 5), m);
-
 		PacManComponent pmc = new PacManComponent(5, 5, 10);
 		GhostComponent gc = new GhostComponent(4, 5, 10);
 
@@ -19,15 +15,11 @@ public class TestAttack extends TestCase {
 		m.add("pacman1", new Location(5, 5), pmc, Map.Type.PACMAN);
 
 		assertTrue(g.attack());
-
 	}
 
-	public void testAttackFail() throws FileNotFoundException{
-
+	public void testAttackFail() {
 		Map m = new Map(10);
-
 		Ghost g = new Ghost("ghost1", new Location(4, 5), m);
-
 		PacManComponent pmc = new PacManComponent(3, 6, 10);
 		GhostComponent gc = new GhostComponent(4, 5, 10);
 
@@ -35,8 +27,5 @@ public class TestAttack extends TestCase {
 		m.add("pacman1", new Location(3, 6), pmc, Map.Type.PACMAN);
 
 		assertFalse(g.attack());
-
 	}
-
-
 }

@@ -2,12 +2,10 @@ import junit.framework.*;
 import java.awt.Color;
 import java.io.*;
 
-public class TestMapEatCookie {
-	
+public class TestMapEatCookie extends TestCase {
+
 	public void testMapEatCookie() {
-
 		Map m = new Map(10);
-
 		PacManComponent pmc = new PacManComponent(3, 3, 10);
 		CookieComponent cc = new CookieComponent(3, 3, 10);
 
@@ -19,9 +17,7 @@ public class TestMapEatCookie {
 	}
 
 	public void testMapEatCookieFail() {
-
 		Map m = new Map(10);
-
 		PacManComponent pmc = new PacManComponent(5, 2, 10);
 		CookieComponent cc = new CookieComponent(3, 3, 10);
 
