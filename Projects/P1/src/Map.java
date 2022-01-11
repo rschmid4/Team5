@@ -140,11 +140,11 @@ public class Map{
 		//the id for a cookie at (10, 1) is tok_x10_y1
 		if(name != null && name.equals("pacman")){
 		Location pmLocation = locations.get(name);
-		String cookieLoc = "tok_";
+		String cookieLoc = "tok";
 		
 		if (this.getLoc(pmLocation).contains(Type.COOKIE)) {
 			// Update the map
-			String cookie = (cookieLoc + "x" + pmLocation.x + "y" + pmLocation.y);
+			String cookie = (cookieLoc + "_x" + pmLocation.x + "_y" + pmLocation.y);
 			JComponent cookieComp = components.get(cookie);
 			field.get(pmLocation).remove(Type.COOKIE);
 			field.put(pmLocation, field.get(pmLocation));
