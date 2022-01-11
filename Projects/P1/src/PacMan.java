@@ -73,8 +73,9 @@ public class PacMan{
 	}
 
 	public boolean is_ghost_in_range() {
-		
-		Location upright = new Location(x-1,y-1);
+		int x = myLoc.x;
+		int y = myLoc.y;
+		Location upright = new Location(x-1, y-1);
 		Location upleft = new Location(x-1, y+1);
 		Location downright = new Location(x+1,y-1);
 		Location downleft = new Location(x+1,y+1);
