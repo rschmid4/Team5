@@ -12,7 +12,7 @@ public class TestPacManMove extends TestCase {
                 Location up = new Location (5, 4);
                 Location right = new Location(6, 5);
 
-                PacMan pm = new PacMan("Aditi", pacLoc , mp);
+                PacMan pm = new PacMan("Aditi", pacLoc, mp);
 
                 mp.add("wall1", up, new WallComponent(up.x , up.y, size), Map.Type.WALL);
                 mp.add("wall3", right, new WallComponent(right.x,right.y, size), Map.Type.WALL);
