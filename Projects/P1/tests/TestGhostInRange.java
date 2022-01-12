@@ -12,7 +12,7 @@ public class TestGhostInRange extends TestCase {
 		PacMan pac;
 		NoFrame frame1 = new NoFrame();
 		Location pacLoc = new Location(10,10);
-		Location ghoLoc = new Location(9,9);
+		Location ghoLoc = new Location(9,10);
 
 		frame1.addPacMan(pacLoc);
 		frame1.addGhost(ghoLoc, "aditi", Color.RED);
