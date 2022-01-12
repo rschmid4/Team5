@@ -3,7 +3,7 @@ import java.awt.Color;
 import java.io.*;
 
 public class TestPacManMove extends TestCase {
-public void testPacManMove() throws FileNotFoundException {
+      public void testPacManMove() throws FileNotFoundException {
                 NoFrame frame = new NoFrame();
                 int size = 10;
                 Location pacLoc = new Location(5,5);
