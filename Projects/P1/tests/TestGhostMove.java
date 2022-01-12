@@ -34,5 +34,4 @@ public class TestGhostMove extends TestCase {
 		// False since Caspar is boxed in by walls 
 		assertFalse(myGhost.move());
 	}
-
 }

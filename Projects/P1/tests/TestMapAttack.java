@@ -31,5 +31,4 @@ public class TestMapAttack extends TestCase{
 		assertTrue(myMap.attack("Caspar"));
 
 	}
-
 }

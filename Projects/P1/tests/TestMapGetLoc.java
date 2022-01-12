@@ -1,4 +1,7 @@
+import junit.framework.*;
+import java.awt.Color;
 import java.util.HashSet;
+import java.io.*;
 
 public class TestMapGetLoc extends TestCase {
 
@@ -10,7 +13,7 @@ public class TestMapGetLoc extends TestCase {
 
 		NoFrame frame = new NoFrame();
 		frame.addPacMan(pacman_loc);
-		frame.addGhost(ghost_loc, "ghost", Color.red);
+		frame.addGhost(ghost_loc, "ghost", Color.RED);
 
 		frame.initPlayers();
 		frame.startGame();

@@ -3,60 +3,46 @@ import java.awt.Color;
 import java.io.*;
 
 public class TestPacManMove extends TestCase {
+      public void testPacManMove() throws FileNotFoundException {
+                NoFrame frame = new NoFrame();
+                int size = 10;
+                Location pacLoc = new Location(5,5);
+                Map mp = frame.getMap();
 
-	PacMan pm;
-	Location lc;
-	Map mp;
+                Location up = new Location (5, 4);
+                Location right = new Location(6, 5);
 
-	public void testPacManMove(){
-		NoFrame frame = new NoFrame();
-		mp = new Map(10);
-		lc = new Location(5,5);
-		pm = new PacMan("Bob", lc , mp);
+                PacMan pm = new PacMan("Aditi", pacLoc, mp);
 
-		Location up = lc.shift(0, 1); 
-		Location down = lc.shift(0, -1); 
-		Location right = lc.shift(1, 0); 
-		Location left = lc.shift(-1, 0);
-		
-		Map grid = frame.getMap(); 
-		frame.addPacMan(lc);
+                mp.add("wall1", up, new WallComponent(up.x , up.y, size), Map.Type.WALL);
+                mp.add("wall3", right, new WallComponent(right.x,right.y, size), Map.Type.WALL);
 
-		GhostComponent gc = new GhostComponent(up.x, up.y, 10);
-		GhostComponent gc2 = new GhostComponent(right.x, right.y, 10);
+                frame.addPacMan(pacLoc);
 
-		mp.add("Pam", up, gc, Map.Type.GHOST);
-		mp.add("Dave", right, gc2, Map.Type.GHOST);
+                assertTrue(pm.move());
+        }
 
-		assertTrue(pm.move());
-	}
+        public void testPacManCantMove() throws FileNotFoundException {
+                NoFrame frame = new NoFrame();
+                int size = 10;
+                Location pacLoc = new Location(5,5);
+                Map mp = frame.getMap();
 
-	public void testPacManCantMove(){
-		NoFrame frame = new NoFrame();
-		mp = new Map(10);
-		lc = new Location(5,5);
-		pm = new PacMan("Bob", lc , mp);
+                Location up = new Location (5, 4);
+                Location down = new Location(5, 6);
+                Location right = new Location(4, 5);
+                Location left = new Location(6, 5);
 
-		Location up = lc.shift(0, 1); 
-		Location down = lc.shift(0, -1); 
-		Location right = lc.shift(1, 0); 
-		Location left = lc.shift(-1, 0); 
+                PacMan pm = new PacMan("Aditi", pacLoc , mp);
 
-		Map grid = frame.getMap();
-                frame.addPacMan(lc);
+                mp.add("wall1", up, new WallComponent(up.x , up.y, size), Map.Type.WALL);
+                mp.add("wall2", down, new WallComponent(down.x, down.y, size), Map.Type.WALL);
+                mp.add("wall3", right, new WallComponent(right.x,right.y, size), Map.Type.WALL);
+                mp.add("wall4", left, new WallComponent(left.x, left.y, size), Map.Type.WALL);
 
-		GhostComponent gc = new GhostComponent(up.x, up.y, 10);
-		GhostComponent gc1 = new GhostComponent(down.x, down.y, 10);
-		GhostComponent gc2 = new GhostComponent(right.x, right.y, 10);
-		GhostComponent gc3 = new GhostComponent(left.x, left.y, 10);
-
-		mp.add("Pam", up, gc, Map.Type.GHOST);
-		mp.add("Bob", down, gc1, Map.Type.GHOST);
-		mp.add("Dave", right, gc2, Map.Type.GHOST);
-		mp.add("Jim", left, gc3, Map.Type.GHOST);
-
-		assertFalse(pm.move());
-	}
+                frame.addPacMan(pacLoc);
+                assertFalse(pm.move());
+        }
 
 
 }

@@ -5,12 +5,10 @@ import java.util.ArrayList;
 
 public class TestPacManValidMoves extends TestCase {
 
-	public void testPacManValidMoves() throws FileNotFoundException{
+	public void testPacManValidMoves() throws FileNotFoundException {
 		Location loc = new Location(5,5);
 		NoFrame frame = new NoFrame();
 		ArrayList<Location> moves = new ArrayList<Location>();
-
-
 		Location up = loc.shift(0, 1);
 		Location down = loc.shift(0, -1);
 		Location right = loc.shift(1, 0);
@@ -22,15 +20,8 @@ public class TestPacManValidMoves extends TestCase {
 		moves.add(left);
 
 		Map map = frame.getMap();
-		for (Location move : moves) {
-			System.out.println(move);
-			for (Map.Type t : map.getLoc(move)) {
-				System.out.println(t);
-			}
-		}
-
 		PacMan pacman = frame.addPacMan(loc);
-		Ghost ghost = frame.addGhost(up, "ghost", Color.red);
+		Ghost ghost = frame.addGhost(up, "ghost", Color.RED);
 
 		frame.initPlayers();
 		frame.startGame();
