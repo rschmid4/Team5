@@ -57,20 +57,19 @@ public class Map{
 		//update locations, components, and field
 		//use the setLocation method for the component to move it to the new location
 		Location currLoc = locations.get(name);
-		JComponent comp = components.get(name);
-
-		if (currLoc == null || comp == null || !field.containsKey(currLoc) || !field.containsKey(loc))
-			return false;
-
 		locations.put(name, loc);
+		JComponent comp = (JComponent)components.get(name);
 		comp.setLocation(loc.x, loc.y);
-
-		field.get(loc).add(type);
+		if(field.get(currLoc)!= null) {
 		field.get(currLoc).remove(type);
-
-		return true;
+		}
+		if(!field.containsKey(loc)) {
+			field.put(loc, new HashSet <Type>());
+			field.get(loc).add(type);
+			return true;
+		}
+			return false;
 	}
-
 	public HashSet<Type> getLoc(Location loc) {
 		//wallSet and emptySet will help you write this method
 		HashSet<Type> loc_types = field.get(loc);
