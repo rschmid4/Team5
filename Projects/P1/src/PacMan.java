@@ -40,19 +40,14 @@ public class PacMan{
 
 	public boolean move() {
 		ArrayList <Location> valid_moves = get_valid_moves();
-		int numMoves, rand_idx;
-		Location rand_loc;
-
-		numMoves = valid_moves.size();
-		if (numMoves <= 0){
-			return false;
+		int numMoves = valid_moves.size();
+		if(numMoves != 0) {
+			int randomLoc = (int) (Math.random()* (numMoves));
+			this.myMap.move(myName, (Location)valid_moves.get(randomLoc), Map.Type.PACMAN);
+			return true;
 		} else {
-		rand_idx = (int) (Math.random() * numMoves);
-		rand_loc = valid_moves.get(rand_idx);
-		this.myLoc = rand_loc;
-		return this.myMap.move(this.myName, rand_loc, Map.Type.PACMAN);
+			return false;
 		}
-		return true;
 	}
 
 	public boolean is_ghost_in_range() {
