@@ -60,9 +60,7 @@ public class Map{
 		locations.put(name, loc);
 		JComponent comp = (JComponent)components.get(name);
 		comp.setLocation(loc.x, loc.y);
-		if(field.get(currLoc)!= null) {
-		field.get(currLoc).remove(type);
-		}
+		
 		if(!field.containsKey(loc)) {
 			field.put(loc, new HashSet <Type>());
 			field.get(loc).add(type);
