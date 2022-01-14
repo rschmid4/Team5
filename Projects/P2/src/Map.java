@@ -126,7 +126,7 @@ public class Map{
 		Location pmLocation;
 
 		pmLocation = locations.get(name);
-		if (!(pmLocation == null) || name.equals("pacman") || getLoc(pmLocation).contains(Type.COOKIE)) {
+		if (getLoc(pmLocation).contains(Type.COOKIE)) {
 			cookie = (id_prefix + "_x" + pmLocation.x + "_y" + pmLocation.y);
 			cookieComp = components.get(cookie);
 			field.get(pmLocation).remove(Type.COOKIE);

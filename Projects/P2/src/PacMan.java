@@ -52,7 +52,7 @@ public class PacMan{
 		this.myLoc = rand_loc;
 		return this.myMap.move(this.myName, rand_loc, Map.Type.PACMAN);
 		}
-		return true;
+		// return true;
 	}
 
 	public boolean is_ghost_in_range() {
