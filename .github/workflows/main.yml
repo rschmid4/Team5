@@ -19,4 +19,4 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Build PacMan Project
         run: |
-          javac -cp "~/Projects/P1/tests/junit-4.10.jar:src/:tests/" ~/Projects/P1/src/*.java ~/Projects/P1/tests/*.java
+          javac -cp "Projects/P1/tests/junit-4.10.jar:src/:tests/" Projects/P1/src/*.java Projects/P1/tests/*.java
