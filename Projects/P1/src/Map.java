@@ -126,7 +126,7 @@ public class Map{
 		Location pmLocation;
 
 		pmLocation = locations.get(name);
-		if (pmLocation == null || !name.equals("pacman") || !getLoc(pmLocation).contains(Type.COOKIE)) {
+		if (!(pmLocation == null) || name.equals("pacman") || getLoc(pmLocation).contains(Type.COOKIE)) {
 			return null;
 		}
 		// Update the map
