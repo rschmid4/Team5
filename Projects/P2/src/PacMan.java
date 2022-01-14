@@ -74,10 +74,12 @@ public class PacMan{
 		Location loc = new Location(this.myLoc.x, this.myLoc.y);
 
 		if (this.myMap.getLoc(loc).contains(Map.Type.COOKIE)) {
-			return this.myMap.eatCookie(this.myName);
+			// return this.myMap.eatCookie(this.myName);
+			return null;
 		}
 
- 		return null;
+		GhostComponent gc = new GhostComponent(5, 5, 10);
+ 		return gc;
 
 	}
 }
