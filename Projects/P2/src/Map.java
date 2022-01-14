@@ -126,16 +126,16 @@ public class Map{
 		Location pmLocation;
 
 		pmLocation = locations.get(name);
-		if (pmLocation == null || !name.equals("pacman") || !getLoc(pmLocation).contains(Type.COOKIE)) {
+		if (!(pmLocation == null) || name.equals("pacman") || getLoc(pmLocation).contains(Type.COOKIE)) {
+			cookie = (id_prefix + "_x" + pmLocation.x + "_y" + pmLocation.y);
+			cookieComp = components.get(cookie);
+			field.get(pmLocation).remove(Type.COOKIE);
+			components.remove(cookie);
+			locations.remove(cookie);
+			this.cookies++;
 			return null;
-		}
-		// Update the map
-		cookie = (id_prefix + "_x" + pmLocation.x + "_y" + pmLocation.y);
-		cookieComp = components.get(cookie);
-		field.get(pmLocation).remove(Type.COOKIE);
-		components.remove(cookie);
-		locations.remove(cookie);
-		this.cookies++;
-		return cookieComp;
+		}		
+		GhostComponent gc = new GhostComponent(5, 5, 10);
+		return gc;
 	}
 }
