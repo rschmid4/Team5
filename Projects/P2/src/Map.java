@@ -57,17 +57,20 @@ public class Map{
 		//update locations, components, and field
 		//use the setLocation method for the component to move it to the new location
 		Location currLoc = locations.get(name);
-		locations.put(name, loc);
-		JComponent comp = (JComponent)components.get(name);
-		comp.setLocation(loc.x, loc.y);
-		
-		if(!field.containsKey(loc)) {
-			field.put(loc, new HashSet <Type>());
-			field.get(loc).add(type);
-			return true;
-		}
+		JComponent comp = components.get(name);
+
+		if (currLoc == null || comp == null || !field.containsKey(currLoc) || !field.containsKey(loc))
 			return false;
+
+		locations.put(name, loc);
+		comp.setLocation(loc.x, loc.y);
+
+		field.get(loc).add(type);
+		field.get(currLoc).remove(type);
+
+		return true;
 	}
+
 	public HashSet<Type> getLoc(Location loc) {
 		//wallSet and emptySet will help you write this method
 		HashSet<Type> loc_types = field.get(loc);
@@ -120,19 +123,20 @@ public class Map{
 		String id_prefix = "tok";
 		String cookie;
 		JComponent cookieComp;
+		JComponent cookiecomp;
 		Location pmLocation;
 
 		pmLocation = locations.get(name);
-		if (pmLocation == null || !name.equals("pacman") || !getLoc(pmLocation).contains(Type.COOKIE)) {
+		cookiecomp = new CookieComponent(3, 3, 9);
+		if (getLoc(pmLocation).contains(Type.COOKIE)) {
+			cookie = (id_prefix + "_x" + pmLocation.x + "_y" + pmLocation.y);
+			cookieComp = components.get(cookie);
+			field.get(pmLocation).remove(Type.COOKIE);
+			components.remove(cookie);
+			locations.remove(cookie);
+			this.cookies++;
 			return null;
 		}
-		// Update the map
-		cookie = (id_prefix + "_x" + pmLocation.x + "_y" + pmLocation.y);
-		cookieComp = components.get(cookie);
-		field.get(pmLocation).remove(Type.COOKIE);
-		components.remove(cookie);
-		locations.remove(cookie);
-		this.cookies++;
-		return cookieComp;
+		return cookiecomp;
 	}
 }

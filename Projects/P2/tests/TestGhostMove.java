@@ -4,7 +4,7 @@ import java.io.*;
 
 public class TestGhostMove extends TestCase {
 
-	PacMan myPacman;
+  PacMan myPacman;
 	Map myMap;
 	Ghost myGhost;
 	Location loc1;

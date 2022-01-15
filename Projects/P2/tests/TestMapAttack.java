@@ -29,6 +29,5 @@ public class TestMapAttack extends TestCase{
 
 		// Check if the PacMan is right next to the homeboy Caspar 
 		assertTrue(myMap.attack("Caspar"));
-
 	}
 }
