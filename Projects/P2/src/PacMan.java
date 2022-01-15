@@ -42,7 +42,6 @@ public class PacMan{
 		ArrayList <Location> valid_moves = get_valid_moves();
 		int numMoves, rand_idx;
 		Location rand_loc;
-
 		numMoves = valid_moves.size();
 		if (numMoves <= 0){
 			return false;
@@ -62,10 +61,10 @@ public class PacMan{
 		Location left = this.myLoc.shift(-1, 0);
 		Boolean condition;
 
-		condition = this.myMap.getLoc(up).contains(Map.Type.GHOST) ||
-					this.myMap.getLoc(down).contains(Map.Type.GHOST) ||
-					this.myMap.getLoc(left).contains(Map.Type.GHOST) ||
-					this.myMap.getLoc(right).contains(Map.Type.GHOST);
+    condition = this.myMap.getLoc(up).contains(Map.Type.WALL) ||
+					this.myMap.getLoc(down).contains(Map.Type.WALL) ||
+					this.myMap.getLoc(left).contains(Map.Type.WALL) ||
+					this.myMap.getLoc(right).contains(Map.Type.WALL);
 
 		return condition;
 	}
@@ -79,6 +78,5 @@ public class PacMan{
 
 		GhostComponent gc = new GhostComponent(5, 5, 10);
  		return gc;
-
 	}
 }

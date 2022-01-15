@@ -18,7 +18,6 @@ public class TestPacManMove extends TestCase {
                 mp.add("wall3", right, new WallComponent(right.x,right.y, size), Map.Type.WALL);
 
                 frame.addPacMan(pacLoc);
-
                 assertTrue(pm.move());
         }
 
@@ -43,6 +42,5 @@ public class TestPacManMove extends TestCase {
                 frame.addPacMan(pacLoc);
                 assertFalse(pm.move());
         }
-
 
 }
