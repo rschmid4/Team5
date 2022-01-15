@@ -50,22 +50,28 @@ public class Ghost{
 	}
 
 	public boolean is_pacman_in_range() {
-		Location up = this.myLoc.shift(0, 1);
-		Location down = this.myLoc.shift(0, -1);
-		Location right = this.myLoc.shift(1, 0);
-		Location left = this.myLoc.shift(-1, 0);
-		Boolean condition;
+		Location up = new Location(myLoc.x, myLoc.y-1);
+		Location down =  new Location(myLoc.x, myLoc.y+1);
+		Location right =  new Location(myLoc.x+1, myLoc.y);
+		Location left =  new Location(myLoc.x-1, myLoc.y);
 
-		condition = this.myMap.getLoc(up).contains(Map.Type.PACMAN) ||
-					this.myMap.getLoc(down).contains(Map.Type.PACMAN) ||
-					this.myMap.getLoc(left).contains(Map.Type.PACMAN) ||
-					this.myMap.getLoc(right).contains(Map.Type.PACMAN);
-
-		return condition;
+		if(myMap.getLoc(up).contains(Map.Type.PACMAN)){
+			return true;
+		}
+		if(myMap.getLoc(down).contains(Map.Type.PACMAN)){
+			return true;
+		}
+		if(myMap.getLoc(left).contains(Map.Type.PACMAN)){
+			return true;
+		}
+		if(myMap.getLoc(right).contains(Map.Type.PACMAN)){
+			return true;
+		}
+		return false;
 	}
 
 	public boolean attack() {
-		if (!is_pacman_in_range())
+		if (is_pacman_in_range())
 			return this.myMap.attack(this.myName);
 
 		return false;
