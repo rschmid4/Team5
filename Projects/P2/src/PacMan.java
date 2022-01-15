@@ -46,12 +46,11 @@ public class PacMan{
 		if (numMoves <= 0){
 			return false;
 		} else {
-		rand_idx = (int) (Math.random() * numMoves);
-		rand_loc = valid_moves.get(rand_idx);
-		this.myLoc = rand_loc;
-		return this.myMap.move(this.myName, rand_loc, Map.Type.PACMAN);
+			rand_idx = (int) (Math.random() * numMoves);
+			rand_loc = valid_moves.get(rand_idx);
+			this.myLoc = rand_loc;
+			return this.myMap.move(this.myName, rand_loc, Map.Type.PACMAN);
 		}
-		// return true;
 	}
 
 	public boolean is_ghost_in_range() {
@@ -61,7 +60,7 @@ public class PacMan{
 		Location left = this.myLoc.shift(-1, 0);
 		Boolean condition;
 
-    condition = this.myMap.getLoc(up).contains(Map.Type.WALL) ||
+		condition = this.myMap.getLoc(up).contains(Map.Type.WALL) ||
 					this.myMap.getLoc(down).contains(Map.Type.WALL) ||
 					this.myMap.getLoc(left).contains(Map.Type.WALL) ||
 					this.myMap.getLoc(right).contains(Map.Type.WALL);

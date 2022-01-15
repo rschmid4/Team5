@@ -42,5 +42,4 @@ public class TestPacManMove extends TestCase {
                 frame.addPacMan(pacLoc);
                 assertFalse(pm.move());
         }
-
 }
