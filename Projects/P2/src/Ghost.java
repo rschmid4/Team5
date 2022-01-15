@@ -40,8 +40,8 @@ public class Ghost{
 		Location rand_loc;
 
 		numMoves = valid_moves.size();
-		if (numMoves < 0)
-			return false;
+		if (numMoves > 0)
+			return true;
 
 		rand_idx = (int) (Math.random() * numMoves);
 		rand_loc = valid_moves.get(rand_idx);
