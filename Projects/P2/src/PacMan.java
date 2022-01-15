@@ -57,10 +57,10 @@ public class PacMan{
 		Location left = this.myLoc.shift(-1, 0);
 		Boolean condition;
 
-		condition = this.myMap.getLoc(up).contains(Map.Type.WALL) ||
-					this.myMap.getLoc(down).contains(Map.Type.WALL) ||
-					this.myMap.getLoc(left).contains(Map.Type.WALL) ||
-					this.myMap.getLoc(right).contains(Map.Type.WALL);
+		condition = this.myMap.getLoc(up).contains(Map.Type.GHOST) ||
+					this.myMap.getLoc(down).contains(Map.Type.GHOST) ||
+					this.myMap.getLoc(left).contains(Map.Type.GHOST) ||
+					this.myMap.getLoc(right).contains(Map.Type.GHOST);
 
 		return condition;
 	}
