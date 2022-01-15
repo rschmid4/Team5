@@ -123,9 +123,11 @@ public class Map{
 		String id_prefix = "tok";
 		String cookie;
 		JComponent cookieComp;
+		JComponent cookiecomp;
 		Location pmLocation;
 
 		pmLocation = locations.get(name);
+		cookiecomp = new CookieComponent(3, 3, 9);
 		if (getLoc(pmLocation).contains(Type.COOKIE)) {
 			cookie = (id_prefix + "_x" + pmLocation.x + "_y" + pmLocation.y);
 			cookieComp = components.get(cookie);
@@ -134,8 +136,7 @@ public class Map{
 			locations.remove(cookie);
 			this.cookies++;
 			return null;
-		}		
-		GhostComponent gc = new GhostComponent(5, 5, 10);
-		return gc;
+		}
+		return cookiecomp;
 	}
 }
