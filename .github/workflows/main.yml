@@ -20,8 +20,8 @@ jobs:
       - name: Build PacMan Project
         run: |
           cd Projects/P1
-          ls tests
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
-          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore tests/TestPacManValidMoves
-          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore tests/TestGhostValidMoves
-          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore tests/TestMapGetLoc
+          cd tests
+          java -cp "junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManValidMoves
+          java -cp "junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGhostValidMoves
+          java -cp "junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapGetLoc
