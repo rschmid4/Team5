@@ -80,7 +80,7 @@ public class Map{
 		if (y > this.dim || x > this.dim || y <= 0 || x <= 0)
 			return wallSet;
 
-		return (loc_types != null && loc_types.size() > 0 ? loc_types : emptySet);
+		return (loc_types != null && loc_types.size() == 0 ? loc_types : emptySet);
 	}
 
 	public boolean attack(String name) {
