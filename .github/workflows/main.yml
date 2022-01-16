@@ -10,8 +10,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build PacMan Project
         run: |
-          cd Projects/P1
-          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
+          javac -cp "tests/junit-4.10.jar:src/:tests/" Projects/P1/src/*.java Projects/P1/tests/*.java
         
   TestPacManInRange:
     runs-on: ubuntu-latest
@@ -22,4 +21,4 @@ jobs:
         working-directory: Projects/P1
         run: |
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestPacManInRange.java
-          java -cp "tests/junit-4.10.jar:src/:tests/" -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManMove
+          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManInRange
