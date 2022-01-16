@@ -11,6 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build PacMan Project
+        working-directory: Projects/P1
         run: |
             cd Projects/P1
             javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
