@@ -16,12 +16,19 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      # Runs a set of commands using the runners shell
-      - name: Build PacMan Project
-        run: |
-          cd Projects/P1
-          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
-          cd tests
-          java -cp "junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManMove
-          java -cp "junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGhostInRange
-          java -cp "junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapMove
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: javac -cp "src/" Projects/P1/src/*.java
+ pacmanmove:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./Projects/P1
+    container: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      - name: Compile TestPacManMove
+        run: javac -cp "tests/junit-4.10.jar:tests/*:src/*" src/*.java tests/TestPacManMove.java
+      - name: Run TestPacManMove
+        run: java -cp "tests/junit-4.10.jar:src/:tests/" -Djava.awt.headless=true org.junit.runner.JUnitCore TestPacManMove
