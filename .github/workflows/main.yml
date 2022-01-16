@@ -31,7 +31,7 @@ jobs:
         run: |
           cd Projects/P1
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
-          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestConsume
+          java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestConsume
 
   TestGhostAttack:
     runs-on: ubuntu-latest
@@ -42,7 +42,7 @@ jobs:
         run: |
           cd Projects/P1
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
-          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestAttack
+          java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestAttack
 
   TestMapEatCookie:
     runs-on: ubuntu-latest
@@ -53,4 +53,4 @@ jobs:
         run: |
           cd Projects/P1
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
-          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapEatCookie
+          java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapEatCookie
