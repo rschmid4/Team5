@@ -35,7 +35,6 @@ jobs:
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestGhostMove.java
           java -cp "tests/junit-4.10.jar:src/:tests/" -Djava.awt.headless=true org.junit.runner.JUnitCore TestGhostMove
           
-  
   TestMapAttack:
     runs-on: ubuntu-latest
     container: openjdk
