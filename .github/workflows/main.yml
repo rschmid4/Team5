@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build PacMan Project
         run: |
-          cd Project/P1
+          cd Projects/P1
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
         
   TestPacManInRange:
