@@ -22,7 +22,7 @@ jobs:
         working-directory: Projects/P1
         run: |
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestPacManInRange.java
-          java -cp "tests/junit-4.10.jar:src/:tests/" -Djava.awt.headless=true org.junit.runner.JUnitCore TestPacManInRange
+          java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManInRange
   
   TestGhostMove:
     runs-on: ubuntu-latest
@@ -33,7 +33,7 @@ jobs:
         working-directory: Projects/P1
         run: |
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestGhostMove.java
-          java -cp "tests/junit-4.10.jar:src/:tests/" -Djava.awt.headless=true org.junit.runner.JUnitCore TestGhostMove
+          java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGhostMove
           
   TestMapAttack:
     runs-on: ubuntu-latest
@@ -44,4 +44,4 @@ jobs:
         working-directory: Projects/P1
         run: |
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestMapAttack.java
-          java -cp "tests/junit-4.10.jar:src/:tests/" -Djava.awt.headless=true org.junit.runner.JUnitCore TestMapAttack
+          java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapAttack
