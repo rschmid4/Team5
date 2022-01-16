@@ -21,4 +21,4 @@ jobs:
       - name: Test TestPacManInRange
         run: |
           javac -cp "tests/junit-4.10.jar:src/:tests/" Projects/P1/src/*.java Projects/P1/tests/TestPacManInRange.java
-          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManMove
+          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore Projects/P1/src/TestPacManMove
