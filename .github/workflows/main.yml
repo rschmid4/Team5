@@ -1,47 +1,49 @@
-# This is a basic workflow to help you get started with Actions
 
+   
 name: CI
+
 on: [push, pull_request, workflow_dispatch]
 
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
     runs-on: ubuntu-latest
     container: openjdk
     steps:
-        - uses: actions/checkout@v2
-        - name: Build Project
-          run: javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
+      - uses: actions/checkout@v2
+      - name: Build PacMan Project
+        run: |
+          cd Projects/P1
+          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
+        
   TestPacManMove:
-      # The type of runner that the job will run on
-      runs-on: ubuntu-latest
-      container: openjdk
-      steps:
-        - uses: actions/checkout@v2
-        - name: Test PacMan Move
-          run: |
-            javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestPacManMove.java
-            java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManMove
+    runs-on: ubuntu-latest
+    container: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      - name: Test TestPacManMove
+        working-directory: Projects/P1
+        run: |
+          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestPacManMove.java
+          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManMove
+          
   TestMapMove:
-      # The type of runner that the job will run on
-      runs-on: ubuntu-latest
-      container: openjdk
-      steps:
-        - uses: actions/checkout@v2
-        - name: Test Map Move
-          run: |
-            javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestMapMove.java
-            java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapMove
-            
-  TestGhostInRange:
-   # The type of runner that the job will run on
-      runs-on: ubuntu-latest
-      container: openjdk
-      steps:
-        - uses: actions/checkout@v2
-        - name: Test Ghost In Range
-          run: |
-            javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestGhostInRange.java
-            java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGhostInRange
+    runs-on: ubuntu-latest
+    container: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      - name: Test TestMapMove
+        working-directory: Projects/P1
+        run: |
+          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestMapMove.java
+          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapMove
+          
+   TestGhostInRange:
+    runs-on: ubuntu-latest
+    container: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      - name: Test  TestGhostInRange
+        working-directory: Projects/P1
+        run: |
+          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/ TestGhostInRange.java
+          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore  TestGhostInRange
