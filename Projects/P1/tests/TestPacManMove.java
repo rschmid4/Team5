@@ -15,4 +15,5 @@ public class TestPacManMove extends TestCase {
                 mp.add("Aditi", pacLoc, pacComp, Map.Type.PACMAN);
                 assertTrue(pm.move());
         }
+
 }
