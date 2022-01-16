@@ -5,17 +5,41 @@ name: CI
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    container: openjdk
-    steps:
-      - uses: actions/checkout@v2
-      - name: Build PacMan Project
-        working-directory: Projects/P1
-        run: |
-            javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestPacManValidMoves.java
-            javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestGhostValidMoves.java
-            javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestMapGetLoc.java
-            java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManValidMoves
-            java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGhostValidMoves
-            java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapGetLoc
+    build:
+        runs-on: ubuntu-latest
+        container: openjdk
+        steps:
+        - uses: actions/checkout@v2
+            working-directory: Projects/P1
+            run: |
+                javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
+
+    TestPacManValidMoves:
+        runs-on: ubuntu-latest
+        container: openjdk
+        steps:
+        - uses: actions/checkout@v2
+            working-directory: Projects/P1
+            run: |
+                javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestPacManValidMoves.java
+                java -cp "tests/junit-4.10.jar:src/:tests/" -Djava.awt.headless=true org.junit.runner.JUnitCore TestGhostValidMoves
+
+    TestGhostValidMoves:
+        runs-on: ubuntu-latest
+        container: openjdk
+        steps:
+        - uses: actions/checkout@v2
+            working-directory: Projects/P1
+            run: |
+                javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestGhostValidMoves.java
+                java -cp "tests/junit-4.10.jar:src/:tests/" -Djava.awt.headless=true org.junit.runner.JUnitCore TestPacManValidMoves
+
+   TestMapGetLoc:
+        runs-on: ubuntu-latest
+        container: openjdk
+        steps:
+        - uses: actions/checkout@v2
+            working-directory: Projects/P1
+            run: |
+                javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestMapGetLoc.java
+                java -cp "tests/junit-4.10.jar:src/:tests/" -Djava.awt.headless=true org.junit.runner.JUnitCore TestMapGetLoc
