@@ -7,14 +7,20 @@ jobs:
     container: openjdk
     steps:
       - uses: actions/checkout@v2
-      - name: Build PacMan Project
-        working-directory: Projects/P1
+      - name: Build Project
+        working-directory: ./Projects/P1
         run: |
-            javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestPacManMove.java
-            javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestGhostInRange.java
-            javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestMapMove.java
-            java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManMove
-            java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGhostInRange
-            java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapMove
-
+          javac -cp "src/" src/*.java
+          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
+          
+  testPacManMove:
+    runs-on: ubuntu-latest
+    container: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      - name: Test PacMan Move
+        working-directory: ./Projects/P1
+        run: |
+          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
+          java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManMove 
  
