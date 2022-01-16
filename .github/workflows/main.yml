@@ -13,6 +13,7 @@ jobs:
           cd Projects/P1
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
         
+        
   TestPacManMove:
     runs-on: ubuntu-latest
     container: openjdk
