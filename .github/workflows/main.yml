@@ -80,8 +80,4 @@ jobs:
         run: |
           cd Projects/P1
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
-<<<<<<< HEAD
-          java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapEatCookie
-=======
           java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapEatCookie
->>>>>>> 7999e833ca2dffe40dcab4cefde2b40e4ed5945f
