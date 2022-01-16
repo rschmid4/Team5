@@ -1,19 +1,28 @@
+# This is a basic workflow to help you get started with Actions
 
 name: CI
+
+# Controls when the workflow will run
 on: [push, pull_request, workflow_dispatch]
 
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  # This workflow contains a single job called "build"
   build:
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
     container: openjdk
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - name: Build Project
-        working-directory: ./Projects/P1
+      # Runs a set of commands using the runners shell
+      - name: Build PacMan Project
         run: |
-          javac -cp "src/" src/*.java
+          cd Projects/P1
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
-          
+  
+  # Aditi
   testPacManMove:
     runs-on: ubuntu-latest
     container: openjdk
@@ -46,29 +55,37 @@ jobs:
         run: |
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
           java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapMove  
- 
-=======
-# This is a basic workflow to help you get started with Actions
 
-name: CI
-
-# Controls when the workflow will run
-on: [push, pull_request, workflow_dispatch]
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  # Hank
+  TestPacManConsume:
     runs-on: ubuntu-latest
     container: openjdk
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      # Runs a set of commands using the runners shell
-      - name: Build PacMan Project
+      - name: Test PacMan consume()
         run: |
           cd Projects/P1
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
+          java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestConsume
 
+  TestGhostAttack:
+    runs-on: ubuntu-latest
+    container: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      - name: Test Ghost attack()
+        run: |
+          cd Projects/P1
+          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
+          java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestAttack
+
+  TestMapEatCookie:
+    runs-on: ubuntu-latest
+    container: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      - name: Test Map eatCookie()
+        run: |
+          cd Projects/P1
+          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
+          java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapEatCookie
