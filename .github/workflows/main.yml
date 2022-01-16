@@ -111,6 +111,7 @@ jobs:
         run: |
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestMapAttack.java
           java -cp "tests/junit-4.10.jar:src/:tests/" -Djava.awt.headless=true org.junit.runner.JUnitCore TestMapAttack
+
   # Noah
   testPacManValidMoves:
     runs-on: ubuntu-latest
@@ -118,8 +119,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Test PacManValidMoves
-      working-directory: ./Projects/P1
-      run: |
+        working-directory: Projects/P1
+        run: |
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestPacManValidMoves.java
           java -cp -Djava.awt.headless=true "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGhostValidMoves
 
@@ -129,8 +130,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Test GhostValidMoves
-      working-directory: ./Projects/P1
-      run: |
+        working-directory: Projects/P1
+        run: |
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestGhostValidMoves.java
           java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManValidMoves
 
@@ -140,7 +141,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Test MapGetLoc
-      working-directory: Projects/P1
-      run: |
+        working-directory: Projects/P1
+        run: |
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestMapGetLoc.java
           java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapGetLoc
