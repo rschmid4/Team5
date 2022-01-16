@@ -54,20 +54,21 @@ public class Map{
 	}
 
 	public boolean move(String name, Location loc, Type type) {
-		//update locations, components, and field
-		//use the setLocation method for the component to move it to the new location
 		Location currLoc = locations.get(name);
 		locations.put(name, loc);
 		JComponent comp = (JComponent)components.get(name);
 		comp.setLocation(loc.x, loc.y);
-		
+		if(field.get(currLoc)!= null) {
+		field.get(currLoc).remove(type);
+		}
 		if(!field.containsKey(loc)) {
 			field.put(loc, new HashSet <Type>());
 			field.get(loc).add(type);
 			return true;
 		}
-			return false;
+		return false;
 	}
+
 	public HashSet<Type> getLoc(Location loc) {
 		//wallSet and emptySet will help you write this method
 		HashSet<Type> loc_types = field.get(loc);
@@ -77,7 +78,7 @@ public class Map{
 		if (y > this.dim || x > this.dim || y <= 0 || x <= 0)
 			return wallSet;
 
-		return (loc_types != null && loc_types.size() > 0 ? loc_types : emptySet);
+		return (loc_types != null && loc_types.size() == 0 ? loc_types : emptySet);
 	}
 
 	public boolean attack(String name) {
@@ -101,7 +102,7 @@ public class Map{
 			return ret;
 
 		for (Location loc : lst) {
-			if (field.get(loc).contains(Map.Type.PACMAN)) {
+			if (field.get(loc.x).contains(Map.Type.WALL)) {
 				locations.put(name, loc);
 				field.remove(loc);
 				components.remove("pacman");
@@ -120,19 +121,20 @@ public class Map{
 		String id_prefix = "tok";
 		String cookie;
 		JComponent cookieComp;
+		JComponent cookiecomp;
 		Location pmLocation;
 
 		pmLocation = locations.get(name);
-		if (pmLocation == null || !name.equals("pacman") || !getLoc(pmLocation).contains(Type.COOKIE)) {
+		cookiecomp = new CookieComponent(3, 3, 9);
+		if (getLoc(pmLocation).contains(Type.COOKIE)) {
+			cookie = (id_prefix + "_x" + pmLocation.x + "_y" + pmLocation.y);
+			cookieComp = components.get(cookie);
+			field.get(pmLocation).remove(Type.COOKIE);
+			components.remove(cookie);
+			locations.remove(cookie);
+			this.cookies++;
 			return null;
 		}
-		// Update the map
-		cookie = (id_prefix + "_x" + pmLocation.x + "_y" + pmLocation.y);
-		cookieComp = components.get(cookie);
-		field.get(pmLocation).remove(Type.COOKIE);
-		components.remove(cookie);
-		locations.remove(cookie);
-		this.cookies++;
-		return cookieComp;
+		return cookiecomp;
 	}
 }

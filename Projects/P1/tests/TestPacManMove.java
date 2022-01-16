@@ -3,34 +3,43 @@ import java.awt.Color;
 import java.io.*;
 
 public class TestPacManMove extends TestCase {
-       public void testPacManMove() throws FileNotFoundException {
+      public void testPacManMove() throws FileNotFoundException {
                 NoFrame frame = new NoFrame();
+                int size = 10;
+                Location pacLoc = new Location(5,5);
                 Map mp = frame.getMap();
-                Location pacLoc = new Location(1,1);
-                Location down = pacLoc.shift(0, -1);
-                Location left = pacLoc.shift(-1, 0);
+
+                Location up = new Location (5, 4);
+                Location right = new Location(6, 5);
 
                 PacMan pm = new PacMan("Aditi", pacLoc, mp);
-                PacManComponent pacComp = new PacManComponent(pacLoc.x, pacLoc.y, 30);
-                mp.add("Aditi", pacLoc, pacComp, Map.Type.PACMAN);
+
+                mp.add("wall1", up, new WallComponent(up.x , up.y, size), Map.Type.WALL);
+                mp.add("wall3", right, new WallComponent(right.x,right.y, size), Map.Type.WALL);
+
+                frame.addPacMan(pacLoc);
                 assertTrue(pm.move());
         }
 
         public void testPacManCantMove() throws FileNotFoundException {
                 NoFrame frame = new NoFrame();
+                int size = 10;
+                Location pacLoc = new Location(5,5);
                 Map mp = frame.getMap();
-                Location pacLoc = new Location(1,1);
-              
-                Location down = pacLoc.shift(0, -1);
-                Location left = pacLoc.shift(-1, 0);
-                Location up = pacLoc.shift(0, 1);
-                Location right = pacLoc.shift(1, 0);
 
-                PacMan pm = new PacMan("Aditi", pacLoc, mp);
-                PacManComponent pacComp = new PacManComponent(pacLoc.x, pacLoc.y, 30);
-                mp.add("Aditi", pacLoc, pacComp, Map.Type.PACMAN);
-              
+                Location up = new Location (5, 4);
+                Location down = new Location(5, 6);
+                Location right = new Location(4, 5);
+                Location left = new Location(6, 5);
+
+                PacMan pm = new PacMan("Aditi", pacLoc , mp);
+
+                mp.add("wall1", up, new WallComponent(up.x , up.y, size), Map.Type.WALL);
+                mp.add("wall2", down, new WallComponent(down.x, down.y, size), Map.Type.WALL);
+                mp.add("wall3", right, new WallComponent(right.x,right.y, size), Map.Type.WALL);
+                mp.add("wall4", left, new WallComponent(left.x, left.y, size), Map.Type.WALL);
+
+                frame.addPacMan(pacLoc);
                 assertFalse(pm.move());
         }
-
 }

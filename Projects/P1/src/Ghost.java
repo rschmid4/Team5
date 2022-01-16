@@ -19,16 +19,16 @@ public class Ghost{
 		Location right = this.myLoc.shift(1, 0);
 		Location left = this.myLoc.shift(-1, 0);
 
-		if (!this.myMap.getLoc(right).contains(Map.Type.WALL)) {
+		if (!this.myMap.getLoc(right).contains(Map.Type.COOKIE)) {
 			valid_moves.add(right);
 		}
-		if (!this.myMap.getLoc(left).contains(Map.Type.WALL)) {
+		if (!this.myMap.getLoc(left).contains(Map.Type.COOKIE)) {
 			valid_moves.add(left);
 		}
-		if (!this.myMap.getLoc(up).contains(Map.Type.WALL)) {
+		if (!this.myMap.getLoc(up).contains(Map.Type.COOKIE)) {
 			valid_moves.add(up);
 		}
-		if (!this.myMap.getLoc(down).contains(Map.Type.WALL)) {
+		if (!this.myMap.getLoc(down).contains(Map.Type.COOKIE)) {
 			valid_moves.add(down);
 		}
 		return valid_moves;
@@ -40,8 +40,8 @@ public class Ghost{
 		Location rand_loc;
 
 		numMoves = valid_moves.size();
-		if (numMoves <= 0)
-			return false;
+		if (numMoves > 0)
+			return true;
 
 		rand_idx = (int) (Math.random() * numMoves);
 		rand_loc = valid_moves.get(rand_idx);
@@ -69,7 +69,6 @@ public class Ghost{
 		}
 		return false;
 	}
-
 
 	public boolean attack() {
 		if (is_pacman_in_range())

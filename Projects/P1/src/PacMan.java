@@ -22,16 +22,16 @@ public class PacMan{
 		Location right = this.myLoc.shift(1, 0);
 		Location left = this.myLoc.shift(-1, 0);
 
-		if (!this.myMap.getLoc(right).contains(Map.Type.WALL)) {
+		if (!this.myMap.getLoc(right).contains(Map.Type.GHOST)) {
 			valid_moves.add(right);
 		}
-		if (!this.myMap.getLoc(left).contains(Map.Type.WALL)) {
+		if (!this.myMap.getLoc(left).contains(Map.Type.GHOST)) {
 			valid_moves.add(left);
 		}
-		if (!this.myMap.getLoc(up).contains(Map.Type.WALL)) {
+		if (!this.myMap.getLoc(up).contains(Map.Type.GHOST)) {
 			valid_moves.add(up);
 		}
-		if (!this.myMap.getLoc(down).contains(Map.Type.WALL)) {
+		if (!this.myMap.getLoc(down).contains(Map.Type.GHOST)) {
 			valid_moves.add(down);
 		}
 		return valid_moves;
@@ -41,13 +41,14 @@ public class PacMan{
 	public boolean move() {
 		ArrayList <Location> valid_moves = get_valid_moves();
 		int numMoves = valid_moves.size();
+
 		if(numMoves != 0) {
 			int randomLoc = (int) (Math.random()* (numMoves));
-			this.myMap.move(myName, (Location)valid_moves.get(randomLoc), Map.Type.PACMAN);
-			return true;
+			return myMap.move(myName, (Location)valid_moves.get(randomLoc), Map.Type.PACMAN);
 		} else {
 			return false;
 		}
+
 	}
 
 	public boolean is_ghost_in_range() {
@@ -57,10 +58,10 @@ public class PacMan{
 		Location left = this.myLoc.shift(-1, 0);
 		Boolean condition;
 
-		condition = this.myMap.getLoc(up).contains(Map.Type.GHOST) ||
-					this.myMap.getLoc(down).contains(Map.Type.GHOST) ||
-					this.myMap.getLoc(left).contains(Map.Type.GHOST) ||
-					this.myMap.getLoc(right).contains(Map.Type.GHOST);
+		condition = this.myMap.getLoc(up).contains(Map.Type.WALL) ||
+					this.myMap.getLoc(down).contains(Map.Type.WALL) ||
+					this.myMap.getLoc(left).contains(Map.Type.WALL) ||
+					this.myMap.getLoc(right).contains(Map.Type.WALL);
 
 		return condition;
 	}
@@ -69,10 +70,10 @@ public class PacMan{
 		Location loc = new Location(this.myLoc.x, this.myLoc.y);
 
 		if (this.myMap.getLoc(loc).contains(Map.Type.COOKIE)) {
-			return this.myMap.eatCookie(this.myName);
+			return null;
 		}
 
- 		return null;
-
+		GhostComponent gc = new GhostComponent(5, 5, 10);
+ 		return gc;
 	}
 }
