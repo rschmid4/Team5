@@ -24,7 +24,7 @@ jobs:
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
           java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManMove
     
-  testghostinrange:
+  testGhostInRange:
     runs-on: ubuntu-latest
     container: openjdk
     steps:
