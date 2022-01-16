@@ -21,3 +21,33 @@ jobs:
         run: |
           cd Projects/P1
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
+
+  TestPacManConsume:
+    runs-on: ubuntu-latest
+    container: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      - name: Test PacMan consume()
+        run: |
+          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
+          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestConsume
+
+  TestGhostAttack:
+    runs-on: ubuntu-latest
+    container: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      - name: Test Ghost attack()
+        run: |
+          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
+          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestAttack
+
+  TestMapEatCookie:
+    runs-on: ubuntu-latest
+    container: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      - name: Test Map eatCookie()
+        run: |
+          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
+          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapEatCookie
