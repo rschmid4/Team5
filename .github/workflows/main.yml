@@ -21,6 +21,7 @@ jobs:
       - name: Test TestPacManMove
         working-directory: Projects/P1
         run: |
+          cd Projects/P1
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestPacManMove.java
           java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManMove
           
@@ -32,6 +33,7 @@ jobs:
       - name: Test TestMapMove
         working-directory: Projects/P1
         run: |
+          cd Projects/P1
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestMapMove.java
           java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapMove
           
@@ -43,5 +45,6 @@ jobs:
       - name: Test  TestGhostInRange
         working-directory: Projects/P1
         run: |
+          cd Projects/P1
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/ TestGhostInRange.java
           java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore  TestGhostInRange
