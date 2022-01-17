@@ -22,16 +22,16 @@ public class PacMan{
 		Location right = this.myLoc.shift(1, 0);
 		Location left = this.myLoc.shift(-1, 0);
 
-		if (!this.myMap.getLoc(right).contains(Map.Type.GHOST)) {
+		if (!this.myMap.getLoc(right).contains(Map.Type.WALL)) {
 			valid_moves.add(right);
 		}
-		if (!this.myMap.getLoc(left).contains(Map.Type.GHOST)) {
+		if (!this.myMap.getLoc(left).contains(Map.Type.WALL)) {
 			valid_moves.add(left);
 		}
-		if (!this.myMap.getLoc(up).contains(Map.Type.GHOST)) {
+		if (!this.myMap.getLoc(up).contains(Map.Type.WALL)) {
 			valid_moves.add(up);
 		}
-		if (!this.myMap.getLoc(down).contains(Map.Type.GHOST)) {
+		if (!this.myMap.getLoc(down).contains(Map.Type.WALL)) {
 			valid_moves.add(down);
 		}
 		return valid_moves;
@@ -40,13 +40,17 @@ public class PacMan{
 
 	public boolean move() {
 		ArrayList <Location> valid_moves = get_valid_moves();
-		int numMoves = valid_moves.size();
-
-		if(numMoves != 0) {
-			int randomLoc = (int) (Math.random()* (numMoves));
-			return myMap.move(myName, (Location)valid_moves.get(randomLoc), Map.Type.PACMAN);
-		} else {
+		int numMoves, rand_idx;
+		Location rand_loc;
+		numMoves = valid_moves.size();
+		if (numMoves <= 0){
 			return false;
+		} 
+		else {
+			rand_idx = (int) (Math.random() * numMoves);
+			rand_loc = valid_moves.get(rand_idx);
+			this.myLoc = rand_loc;
+			return this.myMap.move(this.myName, rand_loc, Map.Type.PACMAN);
 		}
 
 	}
@@ -70,10 +74,8 @@ public class PacMan{
 		Location loc = new Location(this.myLoc.x, this.myLoc.y);
 
 		if (this.myMap.getLoc(loc).contains(Map.Type.COOKIE)) {
-			return null;
+			return myMap.eatCookie("pacman");
 		}
-
-		GhostComponent gc = new GhostComponent(5, 5, 10);
- 		return gc;
+ 		return null;
 	}
 }

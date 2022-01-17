@@ -55,7 +55,7 @@ public class Map{
 
 	public boolean move(String name, Location loc, Type type) {
 		Location currLoc = locations.get(name);
-		locations.put(name, loc);
+		locations.replace(name, loc);
 		JComponent comp = (JComponent)components.get(name);
 		comp.setLocation(loc.x, loc.y);
 		if(field.get(currLoc)!= null) {
@@ -66,6 +66,8 @@ public class Map{
 			field.get(loc).add(type);
 			return true;
 		}
+		//update locations, components, and field
+		//use the setLocation method for the component to move it to the new location
 		return false;
 	}
 
@@ -78,7 +80,7 @@ public class Map{
 		if (y > this.dim || x > this.dim || y <= 0 || x <= 0)
 			return wallSet;
 
-		return (loc_types != null && loc_types.size() == 0 ? loc_types : emptySet);
+		return (loc_types != null && loc_types.size() > 0 ? loc_types : emptySet);
 	}
 
 	public boolean attack(String name) {
@@ -102,7 +104,7 @@ public class Map{
 			return ret;
 
 		for (Location loc : lst) {
-			if (field.get(loc.x).contains(Map.Type.WALL)) {
+			if (field.get(loc).contains(Map.Type.PACMAN)) {
 				locations.put(name, loc);
 				field.remove(loc);
 				components.remove("pacman");
