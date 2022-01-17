@@ -102,7 +102,7 @@ public class Map{
 			return ret;
 
 		for (Location loc : lst) {
-			if (field.get(loc.x).contains(Map.Type.WALL)) {
+			if (field.get(loc).contains(Map.Type.PACMAN)) {
 				locations.put(name, loc);
 				field.remove(loc);
 				components.remove("pacman");
