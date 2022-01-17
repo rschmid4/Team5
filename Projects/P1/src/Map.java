@@ -56,8 +56,7 @@ public class Map{
 	public boolean move(String name, Location loc, Type type) {
 		Location currLoc = locations.get(name);
 		locations.replace(name, loc);
-		JComponent comp = (JComponent)components.get(name);
-		comp.setLocation(loc.x, loc.y);
+		components.get(name).setLocation(loc.x, loc.y);
 		if(field.get(currLoc)!= null) {
 		field.get(currLoc).remove(type);
 		}
