@@ -55,7 +55,7 @@ public class Map{
 
 	public boolean move(String name, Location loc, Type type) {
 		Location currLoc = locations.get(name);
-		locations.put(name, loc);
+		locations.replace(name, loc);
 		JComponent comp = (JComponent)components.get(name);
 		comp.setLocation(loc.x, loc.y);
 		if(field.get(currLoc)!= null) {
@@ -66,6 +66,8 @@ public class Map{
 			field.get(loc).add(type);
 			return true;
 		}
+		//update locations, components, and field
+		//use the setLocation method for the component to move it to the new location
 		return false;
 	}
 
