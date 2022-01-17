@@ -9,7 +9,6 @@ public class TestConsume extends TestCase {
 
 	public void testConsume() {
 
-
 		Map m = new Map(10);
 		Location loc = new Location(5, 5);
 		PacMan p = new PacMan("pacman", loc, m);
@@ -18,7 +17,6 @@ public class TestConsume extends TestCase {
 
 		m.add("tok_x5_y5", loc, cookie, Map.Type.COOKIE);
 		m.add("pacman", loc, p1, Map.Type.PACMAN);
-
 
 		assertTrue(p.consume().equals(cookie));
 	}

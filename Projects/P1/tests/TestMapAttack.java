@@ -7,7 +7,7 @@ public class TestMapAttack extends TestCase{
 	PacMan myPacman;
 	Map myMap;
 	Ghost myGhost;
-	Location loc1; 
+	Location loc1;
 
 	public void testMapAttack() {
 
@@ -15,11 +15,11 @@ public class TestMapAttack extends TestCase{
    		loc1 = new Location(5,6);
 		Location loc2 = new Location(6,6);
 
-		// Create my playing field. 
+		// Create my playing field.
 		myMap = new Map(10);
 		myGhost = new Ghost("Caspar", loc1, myMap);
 
-		// Add Components 
+		// Add Components
 		GhostComponent gcomponent = new GhostComponent(5, 6, 10);
 		PacManComponent pcomponent = new PacManComponent(6, 6, 10);
 
@@ -27,8 +27,7 @@ public class TestMapAttack extends TestCase{
 		myMap.add("Caspar", loc1, gcomponent, Map.Type.GHOST);
 		myMap.add("Manny", loc2, pcomponent, Map.Type.PACMAN);
 
-		// Check if the PacMan is right next to the homeboy Caspar 
+		// Check if the PacMan is right next to the homeboy Caspar
 		assertTrue(myMap.attack("Caspar"));
-
 	}
 }
