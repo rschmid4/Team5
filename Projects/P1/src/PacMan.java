@@ -45,7 +45,8 @@ public class PacMan{
 		numMoves = valid_moves.size();
 		if (numMoves <= 0){
 			return false;
-		} else {
+		} 
+		else {
 			rand_idx = (int) (Math.random() * numMoves);
 			rand_loc = valid_moves.get(rand_idx);
 			this.myLoc = rand_loc;
