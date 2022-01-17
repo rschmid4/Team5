@@ -22,16 +22,16 @@ public class PacMan{
 		Location right = this.myLoc.shift(1, 0);
 		Location left = this.myLoc.shift(-1, 0);
 
-		if (!this.myMap.getLoc(right).contains(Map.Type.GHOST)) {
+		if (!this.myMap.getLoc(right).contains(Map.Type.WALL)) {
 			valid_moves.add(right);
 		}
-		if (!this.myMap.getLoc(left).contains(Map.Type.GHOST)) {
+		if (!this.myMap.getLoc(left).contains(Map.Type.WALL)) {
 			valid_moves.add(left);
 		}
-		if (!this.myMap.getLoc(up).contains(Map.Type.GHOST)) {
+		if (!this.myMap.getLoc(up).contains(Map.Type.WALL)) {
 			valid_moves.add(up);
 		}
-		if (!this.myMap.getLoc(down).contains(Map.Type.GHOST)) {
+		if (!this.myMap.getLoc(down).contains(Map.Type.WALL)) {
 			valid_moves.add(down);
 		}
 		return valid_moves;
