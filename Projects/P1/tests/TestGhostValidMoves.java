@@ -6,11 +6,27 @@ import java.util.ArrayList;
 public class TestGhostValidMoves extends TestCase {
 
 	public void testGhostValidMoves() throws FileNotFoundException {
-		NoFrame frame1 = new NoFrame();
-		Ghost ghost1 = frame1.addGhost(new Location(1, 2), "g1", Color.red);
-		ArrayList<Location> ans1 = new ArrayList<>();
-		ans1.add(new Location(1,3));
-		ans1.add(new Location(1,1));
-		assertEquals(ghost1.get_valid_moves(), ans1);
+		Location loc = new Location(7,7);
+		NoFrame frame = new NoFrame();
+		ArrayList<Location> moves = new ArrayList<Location>();
+		Location up = loc.shift(0, 1);
+		Location down = loc.shift(0, -1);
+		Location right = loc.shift(1, 0);
+		Location left = loc.shift(-1, 0);
+
+		moves.add(up);
+		moves.add(down);
+		moves.add(right);
+		moves.add(left);
+
+		Map map = frame.getMap();
+		PacMan pacman = frame.addPacMan(loc);
+
+		frame.initPlayers();
+		frame.startGame();
+
+		ArrayList<Location> valid_moves = pacman.get_valid_moves();
+
+		assertTrue(valid_moves.size() == 2);
 	}
 }
