@@ -54,21 +54,21 @@ public class Map{
 	}
 
 	public boolean move(String name, Location loc, Type type) {
-		Location currLoc = locations.get(name);
-		locations.replace(name, loc);
-		JComponent comp = (JComponent)components.get(name);
-		comp.setLocation(loc.x, loc.y);
-		if(field.get(currLoc)!= null) {
-		field.get(currLoc).remove(type);
-		}
-		if(!field.containsKey(loc)) {
-			field.put(loc, new HashSet <Type>());
-			field.get(loc).add(type);
-			return true;
-		}
 		//update locations, components, and field
 		//use the setLocation method for the component to move it to the new location
-		return false;
+		Location currLoc = locations.get(name);
+		JComponent comp = components.get(name);
+
+		if (currLoc == null || comp == null || !field.containsKey(currLoc) || !field.containsKey(loc))
+			return false;
+
+		locations.put(name, loc);
+		comp.setLocation(loc.x, loc.y);
+
+		field.get(loc).add(type);
+		field.get(currLoc).remove(type);
+
+		return true;
 	}
 
 	public HashSet<Type> getLoc(Location loc) {
