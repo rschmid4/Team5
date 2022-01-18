@@ -5,36 +5,16 @@ import java.io.*;
 public class TestGhostInRange extends TestCase {
 
 	public void testGhostInRange() throws FileNotFoundException {
-		PacMan pm;
-		Location lc;
-		Map mp;
-		Ghost ghost;
-		PacMan pac;
-		NoFrame frame1 = new NoFrame();
-		Location pacLoc = new Location(10,10);
-		Location ghoLoc = new Location(9,10);
-
-		frame1.addPacMan(pacLoc);
-		frame1.addGhost(ghoLoc, "aditi", Color.RED);
-		mp = frame1.getMap();
-		pac = new PacMan("name", pacLoc, mp);
-		assertTrue(pac.is_ghost_in_range());
+		NoFrame frame = new NoFrame();
+		Ghost ghost = frame.addGhost(new Location(2, 9), "ghosty", Color.RED);
+		PacMan pacman = frame.addPacMan(new Location(2, 8));
+		assertTrue(ghost.is_pacman_in_range());
 	}
 
 	public void testGhostInRange2() throws FileNotFoundException {
-		PacMan pm;
-		Location lc;
-		Map mp;
-		Ghost ghost;
-		PacMan pac;
-		NoFrame frame1 = new NoFrame();
-		Location pacLoc = new Location(10,10);
-		Location ghoLoc = new Location(2,5);
-
-		frame1.addPacMan(pacLoc);
-		frame1.addGhost(ghoLoc, "aditi", Color.RED);
-		mp = frame1.getMap();
-		pac = new PacMan("name", pacLoc, mp);
-		assertFalse(pac.is_ghost_in_range());
+		NoFrame frame = new NoFrame();
+		Ghost ghost = frame.addGhost(new Location(5, 9), "ghosty", Color.RED);
+		PacMan pacman = frame.addPacMan(new Location(2, 8));
+		assertFalse(ghost.is_pacman_in_range());
 	}
 }
