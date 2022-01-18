@@ -14,9 +14,6 @@ public class TestPacManMove extends TestCase {
 
                 PacMan pm = new PacMan("Aditi", pacLoc, mp);
 
-                mp.add("wall1", up, new WallComponent(up.x , up.y, size), Map.Type.WALL);
-                mp.add("wall3", right, new WallComponent(right.x,right.y, size), Map.Type.WALL);
-
                 frame.addPacMan(pacLoc);
                 assertTrue(pm.move());
         }
